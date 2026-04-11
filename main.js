@@ -106,60 +106,46 @@
       setTimeout(measureWords, 300);
     }
 
-    if (reduced) {
-      // Instantly reveal everything
+    // Show everything on load — the title, tagline, and CTAs are visible immediately.
+    // Scrolling ENHANCES with the ink-draw effect, but the hero is never blank.
+    function revealAll() {
       words.forEach(function (el) {
         el.style.strokeDashoffset = '0';
         el.style.fill = 'currentColor';
         el.style.stroke = 'none';
       });
       if (underlinePath) underlinePath.style.strokeDashoffset = '0';
-      if (cityLine) cityLine.classList.add('visible');
-      if (tagline) tagline.classList.add('visible');
-      if (actions) actions.classList.add('visible');
-      return;
+      if (cityLine) { cityLine.style.opacity = '1'; cityLine.style.transform = 'none'; }
+      if (tagline) { tagline.style.opacity = '1'; tagline.style.transform = 'none'; }
+      if (actions) { actions.style.opacity = '1'; actions.style.transform = 'none'; }
     }
 
-    // On scroll: drive all hero animations
+    // Always start with content visible
+    revealAll();
+
+    if (reduced) return;
+
+    // On scroll: hero content fades/parallaxes out as you leave the section
     function updateHero() {
       var rect = section.getBoundingClientRect();
       var sectionH = section.offsetHeight;
-      // t goes 0 -> 1 as section scrolls from top to bottom
       var scrolled = -rect.top;
       var t = unlerp(scrolled, 0, sectionH - window.innerHeight);
 
-      // Phase 1 (t 0.0–0.3): city label fades in
-      if (cityLine) {
-        var cityT = unlerp(t, 0, 0.15);
-        cityLine.style.opacity = cityT;
-        cityLine.style.transform = 'translateY(' + lerp(12, 0, cityT) + 'px)';
+      // Parallax: content moves up slightly and fades as you scroll away
+      var fadeOut = 1 - unlerp(t, 0.3, 0.9);
+      var parallaxY = t * -40;
+
+      var contentEl = section.querySelector('.hero-content');
+      if (contentEl) {
+        contentEl.style.opacity = fadeOut;
+        contentEl.style.transform = 'translateY(' + parallaxY + 'px)';
       }
 
-      // Phase 2 (t 0.05–0.55): words draw in via stroke-dashoffset
-      var wordT = unlerp(t, 0.05, 0.55);
-      words.forEach(function (el) {
-        var dasharray = parseFloat(el.style.strokeDasharray) || 1500;
-        el.style.strokeDashoffset = (dasharray * (1 - wordT)) + 'px';
-      });
-
-      // Phase 3 (t 0.4–0.65): ink underline draws
-      if (underlinePath) {
-        var underT = unlerp(t, 0.4, 0.65);
-        underlinePath.style.strokeDashoffset = (900 * (1 - underT)) + 'px';
-      }
-
-      // Phase 4 (t 0.55–0.75): tagline fades in
-      if (tagline) {
-        var tT = unlerp(t, 0.55, 0.75);
-        tagline.style.opacity = tT;
-        tagline.style.transform = 'translateY(' + lerp(16, 0, tT) + 'px)';
-      }
-
-      // Phase 5 (t 0.65–0.85): CTA slides up
-      if (actions) {
-        var aT = unlerp(t, 0.65, 0.85);
-        actions.style.opacity = aT;
-        actions.style.transform = 'translateY(' + lerp(20, 0, aT) + 'px)';
+      // Background parallax (subtle)
+      var bgEl = section.querySelector('.hero-bg');
+      if (bgEl) {
+        bgEl.style.transform = 'translateY(' + (t * 30) + 'px)';
       }
 
       // Hide scroll cue once we start scrolling
