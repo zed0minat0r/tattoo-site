@@ -175,9 +175,14 @@ a { color: inherit; text-decoration: none; }
   min-height: 44px;
 }
 
-.nav-logo-svg {
-  width: 56px;
-  height: 28px;
+.nav-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+.nav-logo-amp {
+  color: var(--accent);
 }
 
 .logo-sub {
@@ -253,7 +258,7 @@ a { color: inherit; text-decoration: none; }
    SECTION 1: HERO (scroll-driven)
 ══════════════════════════════════════════════════════════ */
 .hero-scroll-section {
-  height: 200vh;
+  height: 130vh;
   position: relative;
 }
 
