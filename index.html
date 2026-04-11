@@ -18,6 +18,53 @@
   <meta name="twitter:title" content="Iron &amp; Ink Tattoo — Philadelphia, PA" />
   <meta name="twitter:description" content="Custom tattoos by world-class artists in Philadelphia. Book a consultation today." />
 
+  <!-- LocalBusiness JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Iron & Ink Tattoo",
+    "url": "https://zed0minat0r.github.io/tattoo-site/",
+    "logo": "https://zed0minat0r.github.io/tattoo-site/favicon.ico",
+    "image": "https://images.unsplash.com/photo-1588776814546-ec7e0a40d4f7?w=1200&auto=format&fit=crop",
+    "description": "Custom tattoo studio in Philadelphia, PA. Traditional, realism, blackwork, Japanese, geometric, and watercolor styles. Established 2018.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1247 S. 9th Street",
+      "addressLocality": "Philadelphia",
+      "addressRegion": "PA",
+      "postalCode": "19147",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.9358,
+      "longitude": -75.1579
+    },
+    "telephone": "+12155550192",
+    "email": "ink@ironandink.example",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "11:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "12:00",
+        "closes": "18:00"
+      }
+    ],
+    "priceRange": "$80–$200+",
+    "currenciesAccepted": "USD",
+    "paymentAccepted": "Cash, Credit Card",
+    "foundingDate": "2018",
+    "sameAs": ["https://instagram.com/ironandink_phl"]
+  }
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,6 +107,7 @@
 
     <!-- ─── HERO ─── -->
     <section class="hero" id="hero" aria-label="Hero">
+      <div class="hero-bg-img" aria-hidden="true"></div>
       <div class="hero-noise" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="hero-eyebrow reveal">Philadelphia, PA · Est. 2018</p>
@@ -453,18 +501,19 @@
         <div class="section-header reveal">
           <span class="section-label">Word on the Street</span>
           <h2 class="section-title" id="reviews-heading">Client Reviews</h2>
+          <p class="section-desc">Real feedback from clients who sat in the chair.</p>
         </div>
 
         <div class="reviews-grid">
 
-          <blockquote class="review-card reveal">
+          <blockquote class="review-card review-card--featured reveal">
             <div class="review-stars" aria-label="5 out of 5 stars">
               <span aria-hidden="true">★★★★★</span>
             </div>
-            <p class="review-text">"Marcus did a half-sleeve Japanese piece over four sessions. The planning, the linework, the shading — every session I walked out in disbelief. The best money I've ever spent on anything."</p>
+            <p class="review-text">"Marcus did a half-sleeve Japanese piece over four sessions. The planning, the linework, the shading — every session I walked out in disbelief. He redesigned a section mid-way because it wasn't sitting right, and the final result is better than anything I could have asked for. The best money I've ever spent on anything, no contest."</p>
             <footer class="review-footer">
-              <span class="review-name">— T. Warren</span>
-              <span class="review-detail">Japanese sleeve · Marcus</span>
+              <span class="review-name">T. Warren</span>
+              <span class="review-detail">Japanese sleeve · Marcus · 2025</span>
             </footer>
           </blockquote>
 
@@ -472,20 +521,20 @@
             <div class="review-stars" aria-label="5 out of 5 stars">
               <span aria-hidden="true">★★★★★</span>
             </div>
-            <p class="review-text">"Sasha did a portrait of my grandmother and I cried in the chair. It looks like a photograph. I've had people stop me on the street to ask about it. Worth every penny of the wait."</p>
+            <p class="review-text">"Sasha did a portrait of my grandmother and I cried in the chair. It looks like a photograph. I've had people stop me on the street to ask about it."</p>
             <footer class="review-footer">
-              <span class="review-name">— A. Delgado</span>
+              <span class="review-name">A. Delgado</span>
               <span class="review-detail">Portrait realism · Sasha</span>
             </footer>
           </blockquote>
 
           <blockquote class="review-card reveal">
-            <div class="review-stars" aria-label="5 out of 5 stars">
-              <span aria-hidden="true">★★★★★</span>
+            <div class="review-stars" aria-label="4 out of 5 stars">
+              <span aria-hidden="true">★★★★☆</span>
             </div>
-            <p class="review-text">"Devon's geometric work is on another level. I brought in a rough reference and he turned it into something way more complex and beautiful than I could have imagined. Clean lines, zero blowout after a year."</p>
+            <p class="review-text">"Devon turned my rough sketch into something I'd never have imagined. Zero blowout a year later. Booking was a bit slow at first — took two weeks to get a reply — but once we were in sync the work was exceptional."</p>
             <footer class="review-footer">
-              <span class="review-name">— K. Liu</span>
+              <span class="review-name">K. Liu</span>
               <span class="review-detail">Geometric mandala · Devon</span>
             </footer>
           </blockquote>
@@ -494,14 +543,22 @@
             <div class="review-stars" aria-label="5 out of 5 stars">
               <span aria-hidden="true">★★★★★</span>
             </div>
-            <p class="review-text">"First tattoo. I was terrified. The whole crew made me feel comfortable from the first text. Zoey's watercolor floral on my shoulder still doesn't look real — in the best way possible."</p>
+            <p class="review-text">"First tattoo ever and I was terrified. Zoey walked me through everything — stencil placement, what to expect during the session, aftercare. The watercolor floral on my shoulder still doesn't look real. In the best way."</p>
             <footer class="review-footer">
-              <span class="review-name">— J. Okafor</span>
+              <span class="review-name">J. Okafor</span>
               <span class="review-detail">Watercolor floral · Zoey</span>
             </footer>
           </blockquote>
 
         </div>
+
+        <div class="reviews-footer reveal">
+          <a href="https://www.google.com/search?q=Iron+%26+Ink+Tattoo+Philadelphia" class="reviews-google-link" target="_blank" rel="noopener noreferrer" aria-label="Read more reviews on Google (opens in new tab)">
+            <svg class="reviews-google-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Read more reviews on Google
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -684,12 +741,12 @@
   </footer>
 
   <!-- ─── MOBILE STICKY BOOK BAR ─── -->
-  <div class="sticky-book-bar" aria-hidden="true">
-    <div class="sticky-book-text">
+  <div class="sticky-book-bar">
+    <div class="sticky-book-text" aria-hidden="true">
       <strong>Ready to get inked?</strong>
       Tue–Sat 11am–8pm
     </div>
-    <a href="#contact" class="sticky-book-btn" aria-label="Book a consultation">Book Now</a>
+    <a href="#contact" class="sticky-book-btn" aria-label="Book a consultation — Iron &amp; Ink Tattoo">Book Now</a>
   </div>
 
   <script src="main.js"></script>

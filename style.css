@@ -402,6 +402,19 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 
+/* Hero background photo — tattoo studio interior */
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1588776814546-ec7e0a40d4f7?w=1600&auto=format&fit=crop&q=60");
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.13;
+  filter: grayscale(60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Grain noise overlay */
 .hero-noise {
   position: absolute;
@@ -1080,6 +1093,53 @@ h1, h2, h3, h4 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-dim);
+}
+
+/* Featured review — wider card, slightly elevated */
+.review-card--featured {
+  border-color: var(--border-light);
+  background: var(--surface-2);
+}
+
+@media (min-width: 768px) {
+  .review-card--featured {
+    grid-column: 1 / -1;
+  }
+  .review-card--featured .review-text {
+    font-size: 1.0625rem;
+  }
+}
+
+/* Google reviews link */
+.reviews-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.reviews-google-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 0.625rem 1.25rem;
+  min-height: 44px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+}
+.reviews-google-link:hover,
+.reviews-google-link:focus-visible {
+  color: var(--white);
+  border-color: var(--text-muted);
+  background: var(--surface);
+}
+.reviews-google-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 /* ─── CONTACT ─── */
