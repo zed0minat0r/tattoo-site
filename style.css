@@ -1588,3 +1588,137 @@ h1, h2, h3, h4 {
   border-color: var(--border-light);
   border-left-color: var(--accent);
 }
+
+/* ─── CUSTOM SVG LOGOTYPE ─── */
+/* Replaces Bebas Neue text logo with hand-crafted SVG needle monogram */
+.nav-logo-svg {
+  height: 28px;
+  width: auto;
+  display: block;
+  overflow: visible;
+}
+
+.logo-svg-text {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 28px;
+  fill: var(--white);
+  /* Slight tracking for character */
+  letter-spacing: 0.05em;
+}
+
+.logo-svg-amp {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 20px;
+  fill: var(--accent);
+}
+
+/* The tattoo needle — the authored mark that breaks the AI-template pattern */
+.logo-needle-shaft {
+  stroke: var(--accent);
+  stroke-width: 1.2px;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.logo-needle-tip {
+  fill: var(--accent);
+}
+
+.logo-ink-drop {
+  fill: var(--accent);
+  opacity: 0.7;
+}
+
+/* Nav logo wrapper layout adjustment for SVG */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 0.2rem;
+}
+
+/* ─── GALLERY FILTER BAR ─── */
+.gallery-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.gallery-filter-btn {
+  padding: 0.45rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  min-height: 36px;
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn:focus-visible {
+  color: var(--white);
+  border-color: var(--text-muted);
+}
+
+.gallery-filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+/* Hidden gallery cards during filter */
+.gallery-card[hidden] {
+  display: none;
+}
+
+/* ─── ARTIST AVAILABILITY TAGS ─── */
+.artist-availability {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.artist-availability--open {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.artist-availability--wait {
+  color: #fb923c;
+  background: rgba(251, 146, 60, 0.08);
+  border: 1px solid rgba(251, 146, 60, 0.25);
+}
+
+/* ─── SECTION DIVIDER — ink stroke motif ─── */
+/* Replaces the generic red-underline section-label border with an SVG ink stroke */
+.section-label {
+  border-bottom: none;
+  padding-bottom: 0;
+  position: relative;
+}
+
+/* Hand-drawn ink underline using SVG data-uri — authored, not assembled */
+.section-label::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin-top: 0.35rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M2 5 C 10 2, 25 7, 40 4 C 55 1, 68 6, 85 3 C 100 0, 112 5, 118 4' stroke='%23c41e3a' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='1' cy='5.5' r='1.5' fill='%23c41e3a' opacity='0.6'/%3E%3Ccircle cx='119' cy='4' r='1' fill='%23c41e3a' opacity='0.4'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

@@ -81,7 +81,21 @@
   <header class="site-header" role="banner">
     <nav class="nav" aria-label="Primary navigation">
       <a href="#hero" class="nav-logo" aria-label="Iron &amp; Ink Tattoo — home">
-        <span class="logo-main">Iron &amp; Ink</span>
+        <!-- Custom SVG logotype — hand-drawn needle monogram -->
+        <svg class="nav-logo-svg" viewBox="0 0 140 40" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+          <!-- Letterforms with hand-drawn imperfection via slightly uneven paths -->
+          <!-- I -->
+          <text x="0" y="30" class="logo-svg-text">I</text>
+          <!-- Ampersand — drawn as accent color, slightly rotated for character -->
+          <text x="18" y="31" class="logo-svg-amp">&amp;</text>
+          <!-- I -->
+          <text x="43" y="30" class="logo-svg-text">I</text>
+          <!-- Tattoo needle crossing through — the authored mark -->
+          <line x1="2" y1="36" x2="52" y2="6" class="logo-needle-shaft"/>
+          <polygon points="52,6 55,3 53,7" class="logo-needle-tip"/>
+          <!-- Ink drop at needle entry -->
+          <ellipse cx="4" cy="35" rx="2.5" ry="1.5" class="logo-ink-drop" transform="rotate(-35 4 35)"/>
+        </svg>
         <span class="logo-sub">Tattoo · Est. 2018</span>
       </a>
 
@@ -142,10 +156,20 @@
           <p class="section-desc">Six distinct traditions. One studio. Every piece crafted to last a lifetime.</p>
         </div>
 
+        <!-- Gallery filter bar -->
+        <div class="gallery-filter-bar reveal" role="group" aria-label="Filter gallery by artist or style">
+          <button class="gallery-filter-btn active" data-filter="all">All Work</button>
+          <button class="gallery-filter-btn" data-filter="marcus">Marcus</button>
+          <button class="gallery-filter-btn" data-filter="sasha">Sasha</button>
+          <button class="gallery-filter-btn" data-filter="devon">Devon</button>
+          <button class="gallery-filter-btn" data-filter="zoey">Zoey</button>
+        </div>
+
         <div class="gallery-grid" role="list" aria-label="Tattoo style gallery">
 
           <article class="gallery-card reveal" role="listitem" tabindex="0"
             data-style="Traditional"
+            data-artist="marcus"
             data-img="https://images.unsplash.com/photo-1604881991720-f91add269bed?w=900&auto=format&fit=crop"
             data-desc="Bold lines, bright fills, timeless imagery. Classic flash that never goes out of style."
             aria-label="Traditional tattoo style — click to view larger">
@@ -164,6 +188,7 @@
 
           <article class="gallery-card reveal" role="listitem" tabindex="0"
             data-style="Realism"
+            data-artist="sasha"
             data-img="https://images.unsplash.com/photo-1590246814883-57c511e4a2db?w=900&auto=format&fit=crop"
             data-desc="Portrait-level detail rendered in skin. Hyperrealistic work that stops people cold."
             aria-label="Realism tattoo style — click to view larger">
@@ -182,6 +207,7 @@
 
           <article class="gallery-card reveal" role="listitem" tabindex="0"
             data-style="Blackwork"
+            data-artist="devon"
             data-img="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=900&auto=format&fit=crop"
             data-desc="Pure ink, no compromise. Bold black statements from geometric fills to dark illustrative work."
             aria-label="Blackwork tattoo style — click to view larger">
@@ -200,6 +226,7 @@
 
           <article class="gallery-card reveal" role="listitem" tabindex="0"
             data-style="Japanese"
+            data-artist="marcus"
             data-img="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=900&auto=format&fit=crop"
             data-desc="Irezumi-inspired compositions with flowing motifs, mythological figures, and breathtaking scale."
             aria-label="Japanese tattoo style — click to view larger">
@@ -218,6 +245,7 @@
 
           <article class="gallery-card reveal" role="listitem" tabindex="0"
             data-style="Geometric"
+            data-artist="devon"
             data-img="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&auto=format&fit=crop"
             data-desc="Sacred geometry, dot work, mandala — precision that rewards a close look every time."
             aria-label="Geometric tattoo style — click to view larger">
@@ -236,6 +264,7 @@
 
           <article class="gallery-card reveal" role="listitem" tabindex="0"
             data-style="Watercolor"
+            data-artist="zoey"
             data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&auto=format&fit=crop"
             data-desc="Vivid pigment that bleeds and blooms. Your skin becomes the canvas, the ink becomes paint."
             aria-label="Watercolor tattoo style — click to view larger">
@@ -289,6 +318,7 @@
               <h3 class="artist-name">Marcus Cole</h3>
               <p class="artist-specialty">Traditional &amp; Japanese</p>
               <p class="artist-exp">12 years experience</p>
+              <p class="artist-availability artist-availability--open">Booking April 2026</p>
               <p class="artist-bio">Marcus built his foundation in old-school flash and evolved into sprawling Japanese bodysuit work. He has a reputation in Philly for line work so clean it looks printed.</p>
             </div>
           </article>
@@ -303,6 +333,7 @@
               <h3 class="artist-name">Sasha Reyes</h3>
               <p class="artist-specialty">Realism &amp; Portrait</p>
               <p class="artist-exp">8 years experience</p>
+              <p class="artist-availability artist-availability--wait">Waitlist — booking Oct 2026</p>
               <p class="artist-bio">Sasha came up through fine art before picking up a machine. Her portrait work captures expression in a way that still shocks people who see it in person. Six-month waitlist. Worth it.</p>
             </div>
           </article>
@@ -317,6 +348,7 @@
               <h3 class="artist-name">Devon Park</h3>
               <p class="artist-specialty">Blackwork &amp; Geometric</p>
               <p class="artist-exp">6 years experience</p>
+              <p class="artist-availability artist-availability--open">Booking May 2026</p>
               <p class="artist-bio">Devon draws patterns the way architects draw buildings — with structure, intention, and an obsession with negative space. His dot-work mandalas are some of the tightest in the city.</p>
             </div>
           </article>
@@ -331,6 +363,7 @@
               <h3 class="artist-name">Zoey Marsh</h3>
               <p class="artist-specialty">Watercolor &amp; Illustrative</p>
               <p class="artist-exp">5 years experience</p>
+              <p class="artist-availability artist-availability--open">Currently open</p>
               <p class="artist-bio">Zoey's work looks like it was painted on, not tattooed. She pushes pigment into forms that feel alive and organic. If you want color that hits, she's your call.</p>
             </div>
           </article>
@@ -452,6 +485,67 @@
           </div>
 
         </div>
+
+        <!-- Pre-booking FAQ -->
+        <div class="section-header reveal" style="margin-top: 3rem; margin-bottom: 2rem;">
+          <span class="section-label">Before You Book</span>
+          <h3 class="section-title" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">Common Questions</h3>
+          <p class="section-desc">What to know before you fill out the form.</p>
+        </div>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-pre-1">
+              <span>What should I bring to my appointment?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body" id="faq-pre-1" hidden>
+              <p>Your government ID, cash or a card for the deposit, and any reference images you've collected. Eat a full meal beforehand — tattooing on an empty stomach is rough. Wear or bring clothing that gives your artist easy access to the placement area.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-pre-2">
+              <span>How much will my tattoo cost?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body" id="faq-pre-2" hidden>
+              <p>Our shop minimum is $80. Hourly rates run $150–$200 depending on artist and complexity — Sasha's portrait work carries a premium rate given the demand. We quote every custom piece honestly after consultation. No surprises on session day.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-pre-3">
+              <span>What's the deposit policy?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body" id="faq-pre-3" hidden>
+              <p>A deposit is required to hold your booking slot and covers your artist's design time. It comes off the final price of your tattoo. Deposits are non-refundable if you no-show or cancel within 48 hours of your appointment. Rescheduling with proper notice keeps your deposit on file.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-pre-4">
+              <span>Do you do touch-ups?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body" id="faq-pre-4" hidden>
+              <p>Yes. If your tattoo heals with spots or inconsistencies that resulted from our work, we'll touch it up at no charge — typically scheduled 8–12 weeks after the original session once healing is complete. Touch-ups caused by poor aftercare (picking, sun exposure, soaking) are charged at a reduced rate.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-pre-5">
+              <span>Can I see my design before the appointment?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body" id="faq-pre-5" hidden>
+              <p>Yes — your artist will share the design with you before session day. Revisions are part of the process. We ask that feedback comes in one consolidated round so your artist can work without back-and-forth edits that dilute the design direction.</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -475,7 +569,7 @@
           <div class="pricing-card pricing-card-featured reveal">
             <div class="pricing-card-label">Hourly Rate</div>
             <div class="pricing-amount">$150–$200<span class="pricing-unit">/hr</span></div>
-            <p class="pricing-detail">Rate depends on the artist and complexity of the work. Custom pieces are quoted per project after consultation.</p>
+            <p class="pricing-detail">Rate depends on the artist and complexity of the work. Custom pieces are quoted per project after consultation. <strong style="color:var(--text);display:block;margin-top:0.5rem;font-size:0.8rem;">Sasha Reyes — premium rate, custom quote only.</strong></p>
             <div class="pricing-badge">Most Common</div>
           </div>
 
@@ -697,7 +791,14 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-main">Iron &amp; Ink</span>
+        <svg class="nav-logo-svg" viewBox="0 0 140 40" aria-label="Iron and Ink Tattoo" focusable="false" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="30" class="logo-svg-text">I</text>
+          <text x="18" y="31" class="logo-svg-amp">&amp;</text>
+          <text x="43" y="30" class="logo-svg-text">I</text>
+          <line x1="2" y1="36" x2="52" y2="6" class="logo-needle-shaft"/>
+          <polygon points="52,6 55,3 53,7" class="logo-needle-tip"/>
+          <ellipse cx="4" cy="35" rx="2.5" ry="1.5" class="logo-ink-drop" transform="rotate(-35 4 35)"/>
+        </svg>
         <span class="logo-sub">Tattoo · Est. 2018</span>
       </div>
       <div class="footer-cols">

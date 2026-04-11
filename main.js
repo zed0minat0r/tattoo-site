@@ -200,6 +200,36 @@
     });
   })();
 
+  /* ─── GALLERY FILTER BY ARTIST ─── */
+  (function initGalleryFilter() {
+    var filterBtns = $$('.gallery-filter-btn');
+    var cards = $$('.gallery-card');
+    if (!filterBtns.length || !cards.length) return;
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.dataset.filter;
+
+        // Update active state
+        filterBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.removeAttribute('aria-pressed');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        // Show/hide cards
+        cards.forEach(function (card) {
+          if (filter === 'all' || card.dataset.artist === filter) {
+            card.hidden = false;
+          } else {
+            card.hidden = true;
+          }
+        });
+      });
+    });
+  })();
+
   /* ─── SMOOTH SCROLL POLYFILL (for anchor nav) ─── */
   (function initSmoothScroll() {
     if (prefersReducedMotion) return;
