@@ -84,7 +84,7 @@
     var actions = $('#heroActions');
     var scrollCue = $('#heroScrollCue');
 
-    if (!section || !words.length) return;
+    if (!section) return;
 
     if (reduced) return;
 
@@ -227,6 +227,39 @@
     dots.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
         setArtist(i);
+      });
+    });
+  })();
+
+  /* ════════════════════════════════════════════════════
+     GALLERY FILTER BAR
+  ════════════════════════════════════════════════════ */
+  (function initGalleryFilter() {
+    var filterBtns = $$('.gallery-filter-btn');
+    var cards = $$('.hcard');
+    if (!filterBtns.length || !cards.length) return;
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+
+        // Update button states
+        filterBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        // Show/hide cards with transition
+        cards.forEach(function (card) {
+          var artist = card.getAttribute('data-artist') || '';
+          if (filter === 'all' || artist === filter) {
+            card.classList.remove('gallery-hidden');
+          } else {
+            card.classList.add('gallery-hidden');
+          }
+        });
       });
     });
   })();
