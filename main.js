@@ -258,15 +258,26 @@
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
 
-        // Show/hide cards with transition
+        // Show/hide cards with transition + collapse after fade
         var visibleCount = 0;
         cards.forEach(function (card) {
           var artist = card.getAttribute('data-artist') || '';
           if (filter === 'all' || artist === filter) {
-            card.classList.remove('gallery-hidden');
+            card.style.display = '';
+            // Use rAF to ensure display change renders before removing hidden class
+            requestAnimationFrame(function () {
+              card.classList.remove('gallery-hidden');
+            });
             visibleCount++;
           } else {
             card.classList.add('gallery-hidden');
+            // After transition, fully remove from layout flow
+            card.addEventListener('transitionend', function handler(e) {
+              if (e.propertyName === 'opacity' && card.classList.contains('gallery-hidden')) {
+                card.style.display = 'none';
+              }
+              card.removeEventListener('transitionend', handler);
+            });
           }
         });
 
@@ -344,6 +355,23 @@
         stop.classList.toggle('lit', t >= stopT);
       });
     }
+  })();
+
+  /* ════════════════════════════════════════════════════
+     ARTIST BOOK LINKS — pre-select artist in form
+  ════════════════════════════════════════════════════ */
+  (function initArtistBookLinks() {
+    var artistSelect = document.getElementById('artist');
+    if (!artistSelect) return;
+
+    $$('.artist-book-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var artistVal = link.getAttribute('data-book-artist');
+        if (artistVal && artistSelect) {
+          artistSelect.value = artistVal;
+        }
+      });
+    });
   })();
 
   /* ════════════════════════════════════════════════════
