@@ -64,7 +64,10 @@ a { color: inherit; text-decoration: none; }
   z-index: 9999;
   background: var(--accent);
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: var(--r-sm);
   font-size: 0.875rem;
   font-weight: 600;
@@ -1107,7 +1110,8 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.8125rem;
   color: var(--text-dim);
   border: 1px solid var(--border);
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  min-height: 44px;
   border-radius: var(--r-sm);
   transition: border-color 0.2s, color 0.2s;
 }
@@ -1223,6 +1227,9 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-mid);
   margin-bottom: 1rem;
 }
+.faq-group-title--spaced {
+  margin-top: 2rem;
+}
 
 .faq-details {
   border-bottom: 1px solid var(--border);
@@ -1288,6 +1295,10 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
 .info-link {
   color: var(--text-mid);
   transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.125rem 0;
 }
 .info-link:hover { color: var(--text); }
 
@@ -1306,6 +1317,8 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   font-size: 0.875rem;
   color: var(--text-mid);
   transition: color 0.2s;
+  min-height: 44px;
+  padding: 0.125rem 0;
 }
 .instagram-link svg { width: 18px; height: 18px; }
 .instagram-link:hover { color: var(--text); }
@@ -1576,6 +1589,10 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   /* Pixel: center-align contact section header on mobile */
   .contact-header { text-align: center; }
   .contact-header .section-desc { margin: 0 auto; }
+
+  /* Pixel: center-align reviews section header on mobile for consistency */
+  .reviews-header { text-align: center; }
+  .reviews-agg { justify-content: center; }
 
   /* Pixel: center-align reviews header link on mobile */
   .reviews-google-wrap { justify-content: center; }
