@@ -215,4 +215,24 @@
     });
   })();
 
+  /* ─── STICKY BOOK BAR — hide when contact section is visible ─── */
+  (function initStickyBar() {
+    var bar = $('.sticky-book-bar');
+    var contact = $('#contact');
+    if (!bar || !contact) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        // Hide bar when booking form is on screen
+        bar.style.opacity = entry.isIntersecting ? '0' : '1';
+        bar.style.pointerEvents = entry.isIntersecting ? 'none' : '';
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(contact);
+
+    // Transition for smooth show/hide
+    bar.style.transition = 'opacity 0.3s ease';
+  })();
+
 })();
