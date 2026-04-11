@@ -206,24 +206,10 @@
       dots[currentIdx] && dots[currentIdx].setAttribute('aria-selected', 'true');
     }
 
-    if (!reduced) {
-      function updateArtists() {
-        var rect = section.getBoundingClientRect();
-        var sectionH = section.offsetHeight;
-        var scrolled = -rect.top;
-        var t = unlerp(scrolled, 0, sectionH - window.innerHeight);
+    // Initialize first artist
+    setArtist(0);
 
-        // Each artist gets equal slice of t
-        var idx = Math.min(Math.floor(t * numArtists), numArtists - 1);
-        if (t <= 0) idx = 0;
-        setArtist(idx);
-      }
-
-      window.addEventListener('scroll', updateArtists, { passive: true });
-      updateArtists();
-    }
-
-    // Dot click (manual override — always available)
+    // Dot click to switch artists
     dots.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
         setArtist(i);

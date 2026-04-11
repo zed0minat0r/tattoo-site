@@ -625,17 +625,12 @@ a { color: inherit; text-decoration: none; }
    SECTION 3: ARTISTS STICKY SHOWCASE
 ══════════════════════════════════════════════════════════ */
 .artists-scroll-section {
-  height: 300vh;
   position: relative;
 }
 
 .artists-sticky {
-  position: sticky;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: var(--nav-h);
@@ -1509,7 +1504,7 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   .hscroll-track { flex-wrap: wrap; height: auto; gap: 1rem; }
   .hcard { width: calc(50% - 0.5rem); }
   .artists-scroll-section { height: auto; }
-  .artists-sticky { position: static; height: auto; padding-top: 0; }
+  .artists-sticky { height: auto; padding-top: 0; }
   .artists-sticky-inner { padding: 4rem 2rem; }
   .artist-photo { position: relative; opacity: 1 !important; transform: none !important; }
   .artist-info { position: relative; opacity: 1 !important; transform: none !important; pointer-events: auto; }
@@ -1601,7 +1596,7 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   .hscroll-section { height: 300vh; }
   .hcard { width: 80vw; }
 
-  .artists-scroll-section { height: 400vh; }
+  .artists-scroll-section { height: auto; }
   .artists-sticky-inner {
     grid-template-columns: 1fr;
     gap: 1.5rem;
