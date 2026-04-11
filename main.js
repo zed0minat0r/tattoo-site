@@ -79,49 +79,12 @@
   ════════════════════════════════════════════════════ */
   (function initHero() {
     var section = $('.hero-scroll-section');
-    var words = $$('.hero-word');
-    var underlinePath = $('.hero-underline-path');
     var cityLine = $('#heroCityLine');
     var tagline = $('#heroTagline');
     var actions = $('#heroActions');
     var scrollCue = $('#heroScrollCue');
 
     if (!section || !words.length) return;
-
-    // Measure total stroke length for each text word
-    // We do this after fonts have likely loaded
-    function measureWords() {
-      words.forEach(function (el) {
-        // getTotalLength is on path elements; for text we use the bbox width as a proxy
-        // and drive stroke-dasharray/offset from 0..bbox.width * 3
-        var len = el.getBBox ? el.getBBox().width * 3 : 1500;
-        el.style.strokeDasharray = len + 'px';
-        el.style.strokeDashoffset = len + 'px';
-      });
-    }
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(measureWords);
-    } else {
-      setTimeout(measureWords, 300);
-    }
-
-    // Show everything on load — the title, tagline, and CTAs are visible immediately.
-    // Scrolling ENHANCES with the ink-draw effect, but the hero is never blank.
-    function revealAll() {
-      words.forEach(function (el) {
-        el.style.strokeDashoffset = '0';
-        el.style.fill = 'currentColor';
-        el.style.stroke = 'none';
-      });
-      if (underlinePath) underlinePath.style.strokeDashoffset = '0';
-      if (cityLine) { cityLine.style.opacity = '1'; cityLine.style.transform = 'none'; }
-      if (tagline) { tagline.style.opacity = '1'; tagline.style.transform = 'none'; }
-      if (actions) { actions.style.opacity = '1'; actions.style.transform = 'none'; }
-    }
-
-    // Always start with content visible
-    revealAll();
 
     if (reduced) return;
 
