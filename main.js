@@ -223,7 +223,28 @@
   (function initGalleryFilter() {
     var filterBtns = $$('.gallery-filter-btn');
     var cards = $$('.hcard');
-    if (!filterBtns.length || !cards.length) return;
+    var section = $('.hscroll-section');
+    if (!filterBtns.length || !cards.length || !section) return;
+
+    // Heights per visible card count — fewer cards = shorter scroll distance
+    // Base is 400vh (6 cards). Each visible card gets ~67vh of scroll room (min 150vh).
+    var BASE_VH = 400;
+    var TOTAL_CARDS = 6;
+
+    function adjustSectionHeight(visibleCount) {
+      if (visibleCount >= TOTAL_CARDS) {
+        section.style.height = BASE_VH + 'vh';
+      } else {
+        // Scale proportionally, floor at 150vh so there's still enough to scroll
+        var scaled = Math.round((visibleCount / TOTAL_CARDS) * BASE_VH);
+        var clamped = Math.max(150, scaled);
+        section.style.height = clamped + 'vh';
+      }
+      // Retrigger scroll calc after height change settles
+      setTimeout(function () {
+        window.dispatchEvent(new Event('scroll'));
+      }, 50);
+    }
 
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -238,14 +259,19 @@
         btn.setAttribute('aria-pressed', 'true');
 
         // Show/hide cards with transition
+        var visibleCount = 0;
         cards.forEach(function (card) {
           var artist = card.getAttribute('data-artist') || '';
           if (filter === 'all' || artist === filter) {
             card.classList.remove('gallery-hidden');
+            visibleCount++;
           } else {
             card.classList.add('gallery-hidden');
           }
         });
+
+        // Dynamically resize section height based on visible card count
+        adjustSectionHeight(visibleCount);
       });
     });
   })();

@@ -569,6 +569,24 @@ a { color: inherit; text-decoration: none; }
   text-align: right;
 }
 
+/* Touch-only swipe hint */
+.gallery-swipe-hint {
+  display: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 0 2rem 0.75rem;
+  margin: 0;
+  opacity: 0.7;
+}
+
+@media (pointer: coarse) {
+  .gallery-swipe-hint {
+    display: block;
+  }
+}
+
 /* ══════════════════════════════════════════════════════════
    SECTION 3: ARTISTS STICKY SHOWCASE
 ══════════════════════════════════════════════════════════ */
