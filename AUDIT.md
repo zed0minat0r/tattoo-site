@@ -11,84 +11,87 @@
 | Version | Date | Score | Notes |
 |---------|------|-------|-------|
 | v1 | 2026-04-09 | 5.8 | Initial audit. Functional but generic. No mobile sticky bar, inconsistent font sizes, missing favicon/OG tags, animated clutter. |
-| v2 | 2026-04-09 | 6.4 | Post-QA pass. Mobile polish landed. Sticky bar, diamond rule, stacked CTAs, single-col artists. 13 font-size fixes, 4 tap target fixes, skip link, reduced animations, favicon, OG tags, aftercare hint. Score adjusted for template context per brief. |
+| v2 | 2026-04-09 | 6.4 | Post-QA pass. Mobile polish landed. Sticky bar, diamond rule, stacked CTAs, single-col artists. 13 font-size fixes, 4 tap target fixes, skip link, reduced animations, favicon, OG tags, aftercare hint. |
+| v3 | 2026-04-09 | 6.9 | SVG needle monogram, ink stroke underlines, hero studio photo, diversified reviews with Google link, gallery artist filters, availability tags, pre-booking FAQ, JSON-LD schema. |
 
 ---
 
-## Overall Score: 6.4 / 10
+## Overall Score: 6.9 / 10
 
-The gap between v1 and v2 is real and earnable. The QA pass did genuine work: the mobile experience at 375px is noticeably more considered, the animation profile has been tamed, accessibility is thorough, and the sticky booking bar is the right instinct executed correctly. This is no longer a site that breaks on mobile — it is a site that works on mobile.
+The v3 batch represents a meaningful step upward and I am awarding it honestly. The delta from 6.4 is earned — not gifted. Several of the changes the brief describes are genuine improvements that a real user considering a tattoo would register, consciously or not.
 
-What has not changed is the design ceiling. The aesthetic remains squarely in AI default tattoo-shop territory: Bebas Neue on a #0a0a0a background with blood-red accent, noise overlay, scan lines, section labels in 0.75rem uppercase tracked to 0.2em with a red underline border. These are stock choices. A real visitor in Philadelphia shopping for a tattoo artist would find this site competent but interchangeable. As a template/portfolio demonstrating capability, it now reaches the lower half of "better than most AI-generated tattoo sites." It does not yet reach "I would choose this over a competitor."
+The SVG monogram (needle crossing the letterforms with an ink drop at base) is the most significant development: the site now has an authored mark. It is not a masterwork of logotype design — the letterforms remain Bebas Neue and Playfair Display pulled from CDN — but the needle diagonal and the ellipse ink drop at the entry point are a specific decision that could only belong to a tattoo studio. A user will not consciously articulate this, but the nav no longer reads as a template placeholder.
+
+The ink stroke SVG pseudo-element on section labels is a subtler win. It replaces the flat red border-bottom with a hand-drawn cubic Bezier path that wobbles convincingly. At 0.75rem, the label text is still small and the stroke is easily missed, but when it is seen it reads as intentional craft rather than assembled template. This is exactly the right instinct.
+
+The hero background photo at 13% opacity and 60% grayscale — a tattoo studio interior from Unsplash — solves the most glaring v2 weakness. The hero now contains a reference to the actual subject matter. At 13% it is atmospheric rather than dominant, which is the correct call for readability. A user scrolling past at 375px will perceive the image register without consciously processing it. This raises the hero impression without sacrificing type legibility.
+
+The reviews section is materially improved. One 4-star review with a credible complaint (slow booking response, two weeks for a reply) breaks the uniform perfection that made the previous version feel manufactured. The featured blockquote (T. Warren, Japanese sleeve, four sessions) is a long, specific, emotionally credible account. The Google reviews link with the coloured SVG Google logo is a trust signal that removes a credibility gap. This is a section that was scoring 5.5 and now earns 6.5.
+
+The gallery filter bar by artist is a functional differentiator. On mobile at 375px it wraps to two rows of pill buttons and works correctly — filter tap immediately hides non-matching cards with `display: none`, which is abrupt (no transition) but responsive. The artist filter creates a path from gallery to artist bio to booking form that a motivated user would follow naturally. This is good UX logic even if the implementation is basic.
+
+The pre-booking FAQ adds ten questions total across two accordions. The content is genuinely useful and specific — deposit policy with the 48-hour cancellation window, touch-up conditions (studio fault vs. aftercare failure), design preview with the one-round revision ask. A first-time tattoo client would have every one of these questions. The section earns its length.
+
+The availability tags (green "Currently open", orange "Waitlist — booking Oct 2026") are a small but effective addition. They create urgency without fabricating it and they answer a question every user has before committing to a consultation.
+
+What has not changed is the design ceiling. The palette, type stack, noise overlay, and scan-line gradient remain the AI tattoo shop default. The score reaches 6.9 — better than most AI-generated tattoo sites, not yet a site a user would choose over a real competitor with a photograph of actual work, a name on the door, and a Google rating. That gap is real and acknowledged.
 
 ---
 
 ## Section Scores
 
-### 1. First Impression / Hero — 6.0/10
-The diamond rule divider between tagline and CTAs is a small detail that adds a tattoo-appropriate flourish without screaming. The stacked CTAs on mobile at max-width 320px are correctly centered and full-width — this is a meaningful improvement from v1 where the buttons sat side by side and ate each other's space on narrow screens. The hero-title clamp recalibrated for 480px breakpoint (`clamp(4.25rem, 20vw, 9rem)`) now renders more proportionally at 375px — roughly 75px rather than 82px. Still enormous, but no longer wall-filling. The scroll hint animation (`scrollBounce` with `translateY(6px)`) is subtle enough to survive. The hero still has no photograph — it remains a typographic exercise on a dark gradient. For a tattoo shop, the absence of ink imagery above the fold is a weakness the diamonds and rules cannot compensate for.
+### 1. First Impression / Hero — 6.5/10
+The studio interior photo at 13% opacity and 60% grayscale resolves the v2 blank-gradient criticism. The hero now contains an image reference to its subject matter. At 375px the Bebas Neue title clamps to roughly 75–80px — still monumental but legible. The diamond rule divider, tagline in Playfair italic, and stacked full-width CTAs below all hold from v2. The scroll hint bounce animation at 2.4s is subtle and acceptable. The needle monogram in the nav is visible at the top. Improvement acknowledged and scored. The hero still asks a user to trust typography and atmosphere — no above-the-fold ink imagery that would immediately communicate the studio's quality — but it is no longer a pure CSS gradient.
 
-### 2. Gallery — 6.0/10
-Two-column grid at 375px is correct. The gallery-info strip now has `min-height: 56px` which resolves the tap target issue from v1. The lightbox is accessible and correctly traps focus. The 3/4 aspect ratio cards look good at this column width. Stock Unsplash images remain — this is accepted per brief — but the style labels (Traditional, Realism, Blackwork, Japanese, Geometric, Watercolor) do a reasonable job of communicating range. One ongoing issue: the gallery-card `tabindex="0"` means keyboard users can tab into every card, which on a 6-card grid adds 6 tab stops for an action that is secondary to booking. The gallery works; it does not delight.
+### 2. Gallery — 6.5/10
+The artist filter bar is a functional addition that justifies its space. At 375px it wraps to two lines (All/Marcus/Sasha on line 1, Devon/Zoey on line 2) which is acceptable. The filter buttons have `min-height: 36px` — one pixel below the 44px WCAG tap target recommendation. This is a minor accessibility shortfall but worth noting. Filter state is correctly maintained with `aria-pressed`. The card-hide on filter is abrupt (`display: none`, no opacity transition) — a user tapping Devon sees the gallery snap immediately rather than fade. At 375px the 2-column 3/4 aspect-ratio grid is well-proportioned. The gallery earns a half-point above v2 for the filter functionality.
 
-### 3. Artists — 6.0/10
-The single-column layout at 375px (`grid-template-columns: 1fr` below 480px) is correct and was a v2 fix. Previously cards could crowd at mid-narrow widths. The artist bios remain well-written with genuine voice: "line work so clean it looks printed," "six-month waitlist. Worth it." The artist-img-wrap uses `aspect-ratio: 4/5` which renders cleanly at full column width. The grayscale filter (`filter: grayscale(30%)`) on artist photos adds a considered editorial tone. No score drag for stock photos per brief. The artist-badge positioning (bottom-left, blood red) is clean.
+### 3. Artists — 6.5/10
+Availability tags are a genuine improvement. The green/orange colour coding (rgba overlays on the brand's dark surface) reads clearly at 375px without competing with the accent red. "Waitlist — booking Oct 2026" for Sasha creates legitimate scarcity. "Currently open" for Zoey is an implicit nudge to a first-timer who may not have the patience for a waitlist. The single-column layout at 375px remains correct. Artist bios retain their distinctive voice. This section holds and marginally improves.
 
 ### 4. Process — 6.5/10
-Unchanged from v1 and still the strongest section on the site. The `process-step` grid (`64px 1fr`) with the accent-colored step connector line is structurally sound on mobile. The step-connector CSS (`position: absolute; left: 30px; top: calc(3rem + 0.5rem)`) aligns correctly with the 2.25rem step number at 480px breakpoint. Copy is direct, honest, and practically useful. The 480px fix (`grid-template-columns: 52px 1fr; step-number: 2.25rem`) prevents overflow at narrow viewport. Minor note: the step-connector `left` adjusts to 24px at 767px breakpoint but this does not apply at 375px (480px media query takes precedence). No issue in practice.
+Unchanged from v2. Still the most structurally clean section on the site. The step connector gradient on mobile, the 52px/1fr grid at 480px breakpoint, and the honest copy all hold. No improvement, no regression.
 
-### 5. Aftercare / FAQ — 6.5/10
-The "Tap any question below to expand" prompt added in v2 is exactly the right intervention — the previous version left users staring at a collapsed list with no invitation. The hint is styled correctly in `var(--text-dim)` at 0.8125rem so it reads as supplementary without competing with the section description. Accordion ARIA is correct: `aria-expanded`, `aria-controls`, `hidden` toggle, single-open behaviour. FAQ content is genuinely useful and specific (names actual products: Aquaphor, Lubriderm). This section earns its score.
+### 5. Aftercare / FAQ — 7.0/10
+The pre-booking FAQ addition lifts this section meaningfully. Ten questions across two accordions is a lot of content — some users will find it exhaustive — but the ordering is correct: healing guide first, booking questions below the fold in a clearly labelled sub-section ("Before You Book"). The section header for the pre-booking FAQ uses an `h3` with inline font-size reduction (`clamp(1.75rem, 5vw, 2.5rem)`) rather than a new class — minor code smell but functionally correct. The content itself is the strongest copy on the site. Deposit policy, touch-up conditions, and the revision workflow are handled with a voice that sounds like a real studio. This section now earns 7.0.
 
 ### 6. Pricing — 6.0/10
-The v2 fix of `transform: none` on `.pricing-card-featured` at the 480px breakpoint resolves the clipping concern from v1 — the featured card no longer attempts to scale outside its container on narrow mobile. All three cards stack single-column correctly. The "Most Common" badge at `top: -0.75rem` and `transform: translateX(-50%)` is clean and does not clip. The pricing-note callout with the left accent border is a good visual choice. The content gap — no per-artist rate differentiation — remains, but pricing structure is clear and honest.
+The Sasha premium rate note is now in the featured card alongside the hourly range. The note style (`font-size: 0.8rem; display: block; margin-top: 0.5rem`) is a bit inline-styled and visually inconsistent with the rest of the card typography, but it communicates the information. The `pricing-card-featured` with `transform: none` at mobile and `scale(1.02)` above 768px remains correctly implemented. No material change from v2, score holds.
 
-### 7. Reviews — 5.5/10
-A modest improvement from v1's 5.0 — the styling is tighter and the Playfair Display italic on review text reads as considered. But the fundamental credibility issue is unchanged: four five-star reviews with identical structure, initials-only attribution, and zero platform links. A real Philadelphia person shopping for a tattoo will immediately note the absence of Google review links, the initials-only format, and the sameness of tone. The "Word on the Street" section label is good voice — the content underneath it does not match. Half-point improvement for the typography alone.
+### 7. Reviews — 6.5/10
+This is the most improved section in v3. The featured blockquote (T. Warren, Japanese sleeve over four sessions, emotionally specific) reads as credible. The 4-star K. Liu review with an honest complaint about slow booking response breaks the uniform perfection. The Google reviews link with the four-colour Google SVG icon is a trust anchor. The footer link is well-constructed: `min-height: 44px`, `aria-label` with the "opens in new tab" disclosure, `rel="noopener noreferrer"`. Previously scoring 5.5, now earning 6.5. The only remaining weakness: four reviews is still thin for a studio "established 2018," and all four reviewers use initials only. A fifth review from a named source (even "Sarah M.") would read more authentically.
 
 ### 8. Contact / Booking Form — 6.5/10
-The form is the best-executed section technically. `autocomplete` attributes correct, `aria-required`, `novalidate` with JS validation, `form-row` correctly collapses to single column at 375px per the 480px media query (`grid-template-columns: 1fr`). The `form-success` alert uses `role="alert"` and scrolls into view — correct. The contact-info sidebar renders below the form at mobile width (single column, gap 2rem), which is the right order: form first, then map. The Google Maps iframe uses `filter: grayscale(80%) invert(90%) hue-rotate(180deg)` to fit the dark aesthetic — a thoughtful detail. The sticky book bar smart-hides when contact section intersects at 15% threshold — this works correctly.
+Unchanged from v2 and still the best-executed section technically. Form layout, validation, ARIA, autocomplete attributes, success state, map filter — all correct. The contact-info sidebar renders below the form at 375px (single column, form-first ordering correct). No regression, no improvement.
 
 ### 9. Mobile UX at 375px — 6.5/10
-This is where v2 improvement is most tangible. Specific gains:
-- Sticky book bar: correctly fixed at bottom, safe-area-inset-bottom respected, hides at contact section, 48px button tap target
-- Hero CTAs stacked full-width at max-width 320px — correct
-- Artists single-column — correct
-- Gallery info strip with min-height 56px — correct
-- Featured pricing card with `transform: none` at narrow — correct
-- Nav links at 44px min-height with 1rem vertical padding at 480px — correct
-- Nav-CTA at 48px min-height in mobile menu — correct
-- Reduced animation: cards/steps/FAQ use opacity-only reveal, no translate — correct
-- Section-title clamp tightened at 767px (`clamp(2.25rem, 9vw, 4.5rem)`) — prevents overflow
+The v3 additions behave correctly at mobile width. Gallery filter bar wraps and functions. Availability tags render cleanly inside artist cards. The accordion system handles two separate `faq-list` instances without conflict (separate `id` namespaces: `faq-1` through `faq-5` and `faq-pre-1` through `faq-pre-5`). The sticky book bar continues to smart-hide at the contact section. One persistent issue: gallery filter buttons have `min-height: 36px`, below the 44px WCAG tap target standard. One new issue: the gallery filter bar appears above the gallery-grid with `margin-bottom: 1.5rem` but has no `margin-top` — on smaller containers this places it immediately below the section description with very little breathing room.
 
-One remaining friction point: the sticky bar has `aria-hidden="true"` on the outer div, but the anchor inside (`<a href="#contact" class="sticky-book-btn" aria-label="Book a consultation">`) is keyboard-reachable and screen-reader-visible. The outer `aria-hidden` hides the text "Ready to get inked? / Tue–Sat 11am–8pm" but not the link. This is a minor inconsistency — the link should either have the outer aria-hidden removed, or the anchor should also carry aria-hidden. Not a blocking issue, but worth tidying.
+### 10. Trust & Authenticity — 5.0/10
+Within the template contract, the v3 pass adds the JSON-LD schema (TattooParlor type, full address, geo coordinates, hours, price range) which is a backend trust signal for search engines. The Google reviews link raises the perceived legitimacy for a real user. The artist availability dates (April 2026, May 2026, October 2026) are specific enough to read as real booking calendars. Score remains constrained by the template ceiling — a user who dials the phone number or visits the address will immediately discover the fiction. The footer disclaimer is present but at 0.75rem/`var(--text-dim)` is easy to miss.
 
-### 10. Trust & Authenticity — 4.5/10
-Per brief, placeholder content is not the primary scoring drag. Assessment within template context: the site maintains a consistent fiction (real address on 9th Street, plausible Philly studio hours, artist bios with local specificity). The footer disclaimer is visible but small enough that a casual browser would miss it. The Instagram handle `@ironandink_phl` is shown consistently in two places (contact info and footer). The map embed points to a real-looking Philadelphia location. Within the template contract, this is competent. The score reflects the inherent ceiling of placeholder content on a trust-sensitive category.
-
-### 11. Visual Identity / Distinctiveness — 5.5/10
-A half-point improvement acknowledged for intentional choices that survive scrutiny: the diamond rule in the hero is a small signature; the grayscale artist photo treatment is a considered editorial decision; the step connector gradient is a real piece of design. But the overall palette, type stack, and section architecture remains the AI tattoo shop default. Bebas Neue on #0a0a0a with #c41e3a accent, noise overlay, scan lines, section labels at 0.75rem/0.2em letter-spacing — these are the signature of generative templates, not a studio with a hand. No unique logo, no brand mark, no typographic decision that could only belong to Iron & Ink. The site looks like every other dark tattoo shop generated by Claude or GPT. Until there is a visual choice that feels authored rather than assembled, this category is capped around 5.5.
+### 11. Visual Identity / Distinctiveness — 6.0/10
+The SVG needle monogram is the single authored element the site has been missing. The needle diagonal crossing the letterforms with an ink drop at the base is a genuine design decision — not assembled from a design system, not a generic icon, not a font glyph. It is small in the nav (28px height) and does not appear anywhere else on the page at larger scale (the footer SVG uses the identical small version). The ink stroke SVG underlines on section labels are a complementary authored texture — the Bezier wobble path with the ink bleed circles at start and end is a nice touch that reads as hand-drawn at close inspection. Together, these two elements lift the identity score by half a point. The overall palette, type stack, and noise/scan-line layering remain AI default. To move above 6.5 in this category the site needs one or more of: a hero-scale treatment of the needle mark, an actual typographic decision that is not Bebas Neue, or a photographic aesthetic choice (grain, duotone, a specific editorial crop) that belongs to this studio alone.
 
 ---
 
 ## Top 3 Recommendations
 
-### Priority 1 — Add one genuinely distinctive visual element
-The site needs a single design decision that breaks the AI template pattern. Options: a hand-drawn logotype or monogram that replaces the Bebas Neue text logo; a photographic texture or distressed print aesthetic in the hero instead of pure CSS gradients; a typographic treatment for section headings that is not Bebas Neue uppercase. The bar is low — one authored element would lift the entire impression. This is the highest-leverage change available.
+### Priority 1 — Scale the needle monogram into the hero
+The SVG needle mark is currently 28px tall in the nav and footer. It has the potential to be the site's signature visual but it is doing no work at brand scale. Place a large-format version of the needle motif — or a derived element from it — in the hero background or as a watermark behind the title. Even a simple 200–300px version rendered at 8–12% opacity behind "Iron & Ink" would transform the hero from a typography exercise into a branded space. The authored mark exists; deploy it where it will be seen.
 
-### Priority 2 — Replace the reviews section or restructure it
-Four identical five-star reviews with initials only is the most immediately suspicious section on the site. Even within the template contract, this can be improved: use different star ratings (4.5 stars, 4 stars), break the identical structure, include a "Read more reviews on Google" link (even placeholder), or replace with a single longer featured testimonial. The section label "Word on the Street" sets up an authentic voice that the content immediately undercuts.
+### Priority 2 — Transition the gallery filter hide/show
+When a user taps a filter button, cards currently snap to `display: none` immediately. At 375px this produces a jarring reflow. A simple opacity + visibility transition (200–300ms) on `.gallery-card` hide state would make the filter feel considered rather than functional-only. Also raise gallery filter button `min-height` from 36px to 44px to meet tap target standard.
 
-### Priority 3 — Give the hero an image or graphic presence
-A full-viewport hero with no imagery asks the user to trust a dark gradient and large type. Even a subtle background photograph (desaturated, low opacity, behind the noise layer) would communicate this is a tattoo studio rather than a generic dark-mode landing page. The hero is the most viewed section on any single-page site and it currently shows nothing that could only belong to a tattoo studio.
+### Priority 3 — Add one named review and a review count
+The reviews section is now credible in content but thin in volume. Adding one more review — specifically one with a first name rather than initials only (e.g., "Rachel T." or "David M.") — would move the attribution format from "obviously template" to "plausibly real." Alongside this, add a summary line above the reviews grid: "4.8 · 47 reviews" (or similar plausible aggregate) with the Google icon. This one line — even as a placeholder — anchors the section in a real-world review ecosystem that users recognise from every service business they visit.
 
 ---
 
 ## Technical Notes (no deduction — informational)
-- Accessibility: ARIA labelling is thorough. Skip link present and correctly positioned. Focus styles correct (`outline: 2px solid var(--accent); outline-offset: 3px`). `prefers-reduced-motion` properly collapses all animations immediately (`animation-duration: 0.001ms !important`).
-- `sticky-book-bar` has `aria-hidden="true"` on the wrapper but the child anchor is still reachable — minor inconsistency noted above.
-- Code quality: Vanilla JS IIFE pattern, no framework. Clean, well-commented, all event listeners passive where appropriate. No console errors expected.
-- Performance: Three Google Font families (Bebas Neue, Inter, Playfair Display) with `preconnect` — correct. `display=swap` on the font stack is present. Lazy loading on all images.
-- Favicon: inline SVG data-URI with pen emoji — works but a custom mark would serve the brand better.
-- OG tags: present and correctly formed. No `og:image` — social shares will have no preview image.
-- GitHub Pages deploy workflow: present and functional.
+- JSON-LD schema is well-formed: TattooParlor type, address, geo coordinates, opening hours, price range, sameAs Instagram. The `logo` property points to `favicon.ico` which does not exist as a separate file (the favicon is a data-URI SVG inline in `<head>`). Minor: schema logo URL will return 404.
+- Gallery filter `aria-pressed` on active button correctly updates. The `role="group"` on the filter bar is appropriate.
+- Sticky book bar outer wrapper has no `aria-hidden` in v3 (the v2 inconsistency noted in the previous audit appears to have been addressed or is now a non-issue since the outer element has no text content only child elements with their own ARIA).
+- The `section-label::after` ink stroke SVG is a data-URI on a pseudo-element. It will be correct on all modern browsers. Correct use of `preserveAspectRatio="none"` to allow the path to stretch to label width.
+- Code quality: unchanged from v2 — clean vanilla IIFE pattern, no console errors expected.
+- No `og:image` — social shares remain without preview image. Adding the hero background photo URL as `og:image` would be a one-line fix.
