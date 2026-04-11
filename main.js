@@ -14,7 +14,7 @@
 
   /* ─── NAV HAMBURGER ─── */
   (function initNav() {
-    var toggle = $('#nav-toggle, .nav-toggle');
+    var toggle = $('.nav-toggle');
     var menu = $('.nav-menu');
     if (!toggle || !menu) return;
 

@@ -8,7 +8,6 @@
 :root {
   --black:        #0a0a0a;
   --black-mid:    #111111;
-  --black-light:  #1a1a1a;
   --surface:      #141414;
   --surface-2:    #1e1e1e;
   --border:       #2a2a2a;
@@ -27,12 +26,10 @@
 
   --radius:   4px;
   --radius-lg: 8px;
-  --gap:      1.5rem;
   --section-pad: 5rem 0;
   --nav-h:    64px;
 
   --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:   cubic-bezier(0.4, 0, 1, 1);
   --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -129,7 +126,7 @@ h1, h2, h3, h4 {
 
 .section-label {
   display: inline-block;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -252,7 +249,7 @@ h1, h2, h3, h4 {
   color: var(--white);
 }
 .logo-sub {
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent);
@@ -304,7 +301,9 @@ h1, h2, h3, h4 {
 }
 
 .nav-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   padding: 0.75rem 0;
   font-size: 0.875rem;
   font-weight: 500;
@@ -400,7 +399,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-eyebrow {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -470,7 +469,7 @@ h1, h2, h3, h4 {
   background: linear-gradient(to bottom, transparent, var(--text-dim));
 }
 .scroll-label {
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -569,7 +568,7 @@ h1, h2, h3, h4 {
   line-height: 1;
 }
 .gallery-hint {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-dim);
@@ -699,7 +698,7 @@ h1, h2, h3, h4 {
   left: 0.75rem;
   background: var(--accent);
   color: var(--white);
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -924,8 +923,13 @@ h1, h2, h3, h4 {
 .pricing-card-featured {
   border-color: var(--accent);
   background: var(--surface-2);
-  transform: scale(1.02);
   box-shadow: 0 0 40px var(--accent-glow);
+}
+
+@media (min-width: 768px) {
+  .pricing-card-featured {
+    transform: scale(1.02);
+  }
 }
 
 .pricing-badge {
@@ -935,7 +939,7 @@ h1, h2, h3, h4 {
   transform: translateX(-50%);
   background: var(--accent);
   color: var(--white);
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -945,7 +949,7 @@ h1, h2, h3, h4 {
 }
 
 .pricing-card-label {
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1051,7 +1055,7 @@ h1, h2, h3, h4 {
   color: var(--white);
 }
 .review-detail {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-dim);
@@ -1093,7 +1097,7 @@ h1, h2, h3, h4 {
 }
 
 .form-label {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1159,9 +1163,8 @@ h1, h2, h3, h4 {
   gap: 2rem;
 }
 
-.info-block {}
 .info-label {
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1202,6 +1205,7 @@ h1, h2, h3, h4 {
   gap: 0.5rem;
   font-size: 0.9rem;
   color: var(--text-muted);
+  min-height: 44px;
   transition: color 0.2s ease;
 }
 .instagram-link:hover { color: var(--white); }
@@ -1247,9 +1251,8 @@ h1, h2, h3, h4 {
   .footer-cols { grid-template-columns: repeat(4, 1fr); }
 }
 
-.footer-col {}
 .footer-col-title {
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1281,7 +1284,7 @@ h1, h2, h3, h4 {
   border-top: 1px solid var(--border);
 }
 .footer-legal p {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
   line-height: 1.6;
 }
