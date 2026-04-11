@@ -415,6 +415,23 @@ h1, h2, h3, h4 {
   z-index: 0;
 }
 
+/* Large-format needle monogram watermark behind hero title */
+.hero-monogram {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-monogram-svg {
+  width: clamp(220px, 60vw, 320px);
+  height: auto;
+  opacity: 0.07;
+}
+
 /* Grain noise overlay */
 .hero-noise {
   position: absolute;
@@ -1040,6 +1057,43 @@ h1, h2, h3, h4 {
   background: var(--black);
 }
 
+/* Reviews aggregate summary line */
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.reviews-summary-stars {
+  color: var(--accent);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.reviews-summary-score {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.reviews-summary-sep {
+  color: var(--text-dim);
+  font-size: 1rem;
+}
+
+.reviews-summary-count {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
 .reviews-grid {
   display: grid;
   gap: 1.25rem;
@@ -1659,7 +1713,7 @@ h1, h2, h3, h4 {
   background: transparent;
   cursor: pointer;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-  min-height: 36px;
+  min-height: 44px;
 }
 
 .gallery-filter-btn:hover,
@@ -1674,9 +1728,20 @@ h1, h2, h3, h4 {
   color: var(--white);
 }
 
-/* Hidden gallery cards during filter */
+/* Gallery card filter fade transition */
+.gallery-card {
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Hidden gallery cards during filter — fade out instead of instant snap */
 .gallery-card[hidden] {
   display: none;
+}
+
+/* Pre-hide state for fade: cards marked for hide get opacity 0 first */
+.gallery-card.is-filtered-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ─── ARTIST AVAILABILITY TAGS ─── */

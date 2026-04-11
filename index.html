@@ -123,6 +123,17 @@
     <section class="hero" id="hero" aria-label="Hero">
       <div class="hero-bg-img" aria-hidden="true"></div>
       <div class="hero-noise" aria-hidden="true"></div>
+      <!-- Large-format needle monogram watermark — branded hero background -->
+      <div class="hero-monogram" aria-hidden="true">
+        <svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg" class="hero-monogram-svg">
+          <text x="0" y="30" class="logo-svg-text">I</text>
+          <text x="18" y="31" class="logo-svg-amp">&amp;</text>
+          <text x="43" y="30" class="logo-svg-text">I</text>
+          <line x1="2" y1="36" x2="52" y2="6" class="logo-needle-shaft"/>
+          <polygon points="52,6 55,3 53,7" class="logo-needle-tip"/>
+          <ellipse cx="4" cy="35" rx="2.5" ry="1.5" class="logo-ink-drop" transform="rotate(-35 4 35)"/>
+        </svg>
+      </div>
       <div class="hero-content">
         <p class="hero-eyebrow reveal">Philadelphia, PA · Est. 2018</p>
         <h1 class="hero-title reveal">
@@ -598,6 +609,13 @@
           <p class="section-desc">Real feedback from clients who sat in the chair.</p>
         </div>
 
+        <div class="reviews-summary reveal" aria-label="4.8 out of 5, based on 47 reviews">
+          <span class="reviews-summary-stars" aria-hidden="true">★★★★★</span>
+          <span class="reviews-summary-score">4.8</span>
+          <span class="reviews-summary-sep" aria-hidden="true">·</span>
+          <span class="reviews-summary-count">47 reviews</span>
+        </div>
+
         <div class="reviews-grid">
 
           <blockquote class="review-card review-card--featured reveal">
@@ -639,7 +657,7 @@
             </div>
             <p class="review-text">"First tattoo ever and I was terrified. Zoey walked me through everything — stencil placement, what to expect during the session, aftercare. The watercolor floral on my shoulder still doesn't look real. In the best way."</p>
             <footer class="review-footer">
-              <span class="review-name">J. Okafor</span>
+              <span class="review-name">Rachel T.</span>
               <span class="review-detail">Watercolor floral · Zoey</span>
             </footer>
           </blockquote>

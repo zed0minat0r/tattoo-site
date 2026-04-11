@@ -218,14 +218,41 @@
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
 
-        // Show/hide cards
-        cards.forEach(function (card) {
-          if (filter === 'all' || card.dataset.artist === filter) {
-            card.hidden = false;
-          } else {
-            card.hidden = true;
-          }
-        });
+        // Show/hide cards with 200ms opacity fade
+        if (prefersReducedMotion) {
+          // Instant snap for reduced-motion users
+          cards.forEach(function (card) {
+            if (filter === 'all' || card.dataset.artist === filter) {
+              card.hidden = false;
+            } else {
+              card.hidden = true;
+            }
+          });
+        } else {
+          // Fade out non-matching cards, then hide; fade in matching cards
+          cards.forEach(function (card) {
+            var matches = filter === 'all' || card.dataset.artist === filter;
+            if (!matches) {
+              card.style.opacity = '0';
+              card.style.pointerEvents = 'none';
+              setTimeout(function () {
+                card.hidden = true;
+                card.style.opacity = '';
+                card.style.pointerEvents = '';
+              }, 200);
+            } else {
+              card.hidden = false;
+              card.style.opacity = '0';
+              card.style.pointerEvents = 'none';
+              requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                  card.style.opacity = '';
+                  card.style.pointerEvents = '';
+                });
+              });
+            }
+          });
+        }
       });
     });
   })();
