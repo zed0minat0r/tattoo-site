@@ -16,71 +16,84 @@
 | v4 | 2026-04-09 | 7.2 | Complete scroll-driven rebuild. Horizontal gallery (400vh), self-drawing process timeline, dot-click artist navigation replacing broken iOS sticky, clean text nav logo, SVG favicon, 57 dead CSS lines removed, 9 font size fixes, tap targets corrected, hero reduced to 130vh, contrast improved. |
 | v5 | 2026-04-09 | 7.4 | Gallery filter scroll-height fix, swipe hint added, og:image + twitter:image present, 9 tap target QA fixes across reviews/phone/email/instagram/skip link, reviews header centered, 57 lines dead CSS removed. |
 | v6 | 2026-04-09 | 7.6 | Hero background fixed, Realism gallery card image fixed, gallery reduced to 300vh/250vh mobile, scroll hint corrected to "Scroll down", hidden cards collapse to width:0, per-artist Book CTAs added, additional QA pass. |
+| v7 | 2026-04-09 | 7.7 | Instagram contact link fixed (now ironandink_phl), artist dot nav shows name labels on mobile, gallery images replaced to match style labels, pricing CTAs added to all 3 cards, trust badges + dates on reviews, trust bar + "Why Us" block in contact, hero 4-stat glass strip added. |
 
 ---
 
-## Overall Score: 7.6 / 10
+## Overall Score: 7.7 / 10
 
-Six versions in, the site has resolved every item raised in the v5 audit. Let me be specific about what changed, what it's worth, and what remains.
+This is a +0.1 increment from v6. The changes land correctly but the aggregate impact is small because they address peripheral polish rather than structural gaps. Let me be specific.
 
-**What landed and whether it earned its points:**
+**What changed and what it is worth:**
 
-The scroll hint correction is the most important change — and it was the top priority from v5. The gallery-swipe-hint text now reads "Scroll down to explore ↓" with a downward arrow rather than "Swipe to explore →". The mechanism is vertical scroll driving a JS `translateX` — the instruction now matches the actual interaction. This removes a genuine expectation mismatch that would have confused a real user on a first visit. Good fix.
+The Instagram link fix in the contact column is a one-line correction that was Priority 1 from the v6 audit. The `href` now points to `https://instagram.com/ironandink_phl` rather than the bare `https://instagram.com`. This is a genuine bug fix and it is the right call.
 
-The hidden card collapse is the second priority from v5, and it has been executed correctly. The `.gallery-hidden` class now sets `flex: 0 0 0 !important`, `min-width: 0 !important`, `max-width: 0 !important`, `width: 0 !important`, `padding: 0 !important`, `border-width: 0 !important`, `margin: 0 !important`. Cards visually and dimensionally disappear from the track layout. The transition properties on `.hcard` include `flex-basis 0.25s ease, max-width 0.25s ease, padding 0.25s ease, margin 0.25s ease` — the collapse is animated, not a snap. This fixes the "ghost width" problem correctly.
+The dot navigation name labels on mobile — `.dot-label` blocks now display on `max-width: 720px` — resolve the discoverability concern from v6 Priority 2. A user landing on the Artists section at 375px now sees four labelled tabs (Marcus, Sasha, Devon, Zoey) rather than four anonymous dots. The implementation is clean: `flex-direction: column`, 11px label, `min-height: 44px` maintained, active dot label turns accent red. This is a meaningful mobile UX improvement.
 
-The per-artist Book CTAs are the third priority from v5. Each artist panel now has an `<a class="artist-book-link" href="#contact" data-book-artist="[name]">` link. The JS `initArtistBookLinks()` function pre-selects the matching option in the `#artist` select before scrolling to contact. This is the correct implementation — a 44px-tall link in accent red, styled with `letter-spacing: 0.1em` uppercase, with hover letter-spacing expansion. It converts the Artists section from a showcase into a conversion point. This was the highest-leverage UX addition flagged in v5 and it has landed cleanly.
+The gallery images have been updated. The Realism card (photo-1648421831863) and Japanese card (photo-1659693707379) are now different from the prior broken state. The Watercolor card is photo-1516040090979 rather than the exercising-person image. However, I must be direct about what the gallery still shows at 375px: these are Unsplash images that approximate the category rather than demonstrate actual studio work. The Realism card is a person receiving a tattoo (not a realism tattoo). The Geometric card (photo-1531746020798) shows blurred circular bokeh, not crisp line geometry. This is a template constraint and expected, but a real user comparing studios would clock it immediately. No points deducted for the template nature — but no bonus points for approximation either.
 
-The gallery section height reduction (400vh to 300vh desktop, 250vh mobile) and the Unsplash image fixes are infrastructure. The hero background and Realism card image were previously broken — now they are not. These are not improvements over a working state; they restore the site to the state it should have been in before. Worth noting but not worth bonus points.
+The pricing CTAs are three inline text-links styled in underline-border fashion. At 375px the pricing row stacks to single column. The CTAs read "Book Now →", "Get a Quote →", "Discuss Your Project →". They function and are 44px minimum height via the `pricing-cta` flex rule. This converts a read-only pricing table into a conversion surface. Small but correct.
 
-The site is now a well-executed template. Every major UX gap across six iterations has been addressed. The ceiling is the trust and authenticity layer — stock portraits with no visible tattoos, no real portfolio, no verifiable social presence — and that ceiling will not move until the content changes.
+The reviews trust badges ("First-timer friendly", "No-pressure consultations", "Touch-ups included") appear above the Google link. The dates on reviews (2025, 2025, 2024, 2025) add credibility signal. Both are legitimate additions to the trust layer.
+
+The contact section now has a form trust bar (Reply within 24hrs / No commitment required / Free consultation) above the submit button, and a "Why Us" block in the info column (Custom work only, 8 years avg experience, Licensed by Philadelphia, Vegan-friendly ink). These are appropriate for a booking form. The trust bar items are small (0.75rem) and icon-accompanied — they read clearly on mobile without taking undue space.
+
+The hero 4-stat glass strip (Est. 2018 / 4 Artists / 4.8 Stars / 6 Styles) is the highest-profile addition. It occupies a frosted-glass strip below the CTAs, max-width 480px (scaling to 100% on mobile). At 375px it renders at full width with `.hero-stat-num` in Bebas Neue at 1.25rem. The four stats are the right choice — they answer the first questions a new client would have without requiring a scroll. This is good addition.
+
+**Where the ceiling is:**
+
+The site has now addressed every audit point raised since v4. The remaining ceiling is the authenticity layer: stock photography in place of real portfolio work, placeholder name/address/phone details, and review initials only. These are template constraints, not code failures. A real studio deployment would break through this ceiling immediately by substituting actual content.
+
+The secondary ceiling is visual distinctiveness. The dark-background / red-accent / Bebas Neue pattern is familiar enough to read "tattoo studio template" on sight. The scroll interactions are well-executed but they do not create a visual identity that says "Iron & Ink specifically" — they say "premium template." This is a design brief problem, not a bug.
+
+Neither of these ceilings is addressable within the template scope. Within that scope, the site is close to its practical ceiling.
 
 ---
 
 ## Section Scores
 
-### 1. First Impression / Hero — 6.8 / 10
-Unchanged. The Unsplash studio interior image loads at 1600px with q=60, `fetchpriority="high"` and `loading="eager"` — correct for LCP. The 135-degree gradient overlay at 85%/60%/75% opacity allows the image to read at centre while preserving text contrast at all edges. At 375px the hero title renders at approximately 52px (14vw of 375). Three-register hierarchy — red city overline, Bebas Neue title, italic DM Serif tagline — reads correctly. CTA buttons stack via `flex-wrap: wrap` at 52px tall. Score holds.
+### 1. First Impression / Hero — 7.0 / 10
+Up from 6.8. The 4-stat glass strip is the right addition — it gives a first-time mobile visitor immediate anchor data (how old, how many artists, what rating, what styles) without requiring a scroll. At 375px the strip renders clearly in Bebas Neue with `.hero-stat-num` at 1.25rem. The frosted glass treatment (`background: rgba(255,255,255,0.04); backdrop-filter: blur(8px)`) reads as intentional rather than tacked on. The CTA pair ("Book a Consultation" primary, "View Our Work" ghost) remains correct. Hero section height is 130vh — the scroll cue appears and disappears appropriately. Score moves for the stat strip landing cleanly.
 
 ### 2. Gallery (Horizontal Scroll) — 7.6 / 10
-Up from 7.3. The three v5 priority items for this section have all been resolved: scroll hint now reads "Scroll down to explore ↓" (correct to the interaction mechanic), hidden cards collapse to zero width in the track (no ghost space), and the section height is 300vh desktop / 250vh mobile. At 375px, 88vw card width (from the `@media (max-width: 480px)` rule), a single filtered card gives the user 250vh of scroll to traverse it — appropriate. The filter height adjustment via `adjustSectionHeight()` scales proportionally from 150vh (1 card) to 300vh (6 cards). No visible artifacts remain in filtered state. This is the most improved section across v5-v6.
+Unchanged from v6. The images are different Unsplash selections but remain approximations of the described styles. The filter bar, progress indicator, card collapse animation, and scroll behaviour are all correctly implemented from prior versions. No regression. No structural improvement. Score holds.
 
-### 3. Artists — 7.4 / 10
-Up from 7.0. The Book CTAs are the substantive change: "Book Marcus →", "Join Sasha's Waitlist →", "Book Devon →", "Book Zoey →" — each at `min-height: 44px`, in accent red, with JS pre-selection of the correct artist dropdown value on click before the smooth-scroll to `#contact`. This is the correct implementation of the v5 Priority 3. The availability badges (open/waitlist) create urgency. The dot navigation is reliable at 44px tap targets. The photo sits below the info panel at 45vw height on mobile. Score moves up for the booking conversion addition.
+### 3. Artists — 7.5 / 10
+Up from 7.4. The dot name labels on mobile resolve the discoverability gap. At 375px a user sees four labelled buttons (Marcus, Sasha, Devon, Zoey) with the active label turning accent red. The artist Book CTAs remain from v6. The photo panel renders at `45vw` height at 375px — adequate for a portrait orientation. The availability badges (Booking April 2026 / Waitlist Oct 2026 / Booking May 2026 / Currently open) add urgency. Score moves for the label fix.
 
 ### 4. Process (Self-Drawing Timeline) — 7.5 / 10
 Unchanged. Best scroll interaction on the site. `strokeDashoffset` SVG line draws through four steps, each step lighting with dot glow, text brightening, description sliding in. `prefers-reduced-motion` fallback correct. Step copy remains the strongest writing on the site. Score holds.
 
-### 5. Pricing — 6.0 / 10
-Unchanged. Three cards stack to single column at 375px. Featured card carries the needle accent SVG at 12% opacity. Pricing footer note closes the section. The structure is clear and the copy is honest about the pricing framework. No movement because there is nothing wrong here and nothing distinctively good. Score holds.
+### 5. Pricing — 6.5 / 10
+Up from 6.0. The three CTAs convert a read-only table into a conversion surface. At 375px the cards stack to single column. The featured centre card carries the "Get a Quote →" CTA in accent red; the flanking cards carry "Book Now →" and "Discuss Your Project →" in text-dim with border-bottom underline. These are small interactive elements (0.8125rem) but meet 44px via the `inline-flex` declaration. The shop minimum ($80), hourly ($150–$200), and large piece (custom quote) structure is honest and clear. The pricing-footer-note reads naturally. Score moves for the CTAs.
 
-### 6. Reviews — 6.5 / 10
-Unchanged. Reviews header centered on mobile (confirmed in CSS). Google link at 44px. Four reviews, strong content. The trust ceiling is the same: 47 claimed reviews, four displayed, initials only. Score holds.
+### 6. Reviews — 6.6 / 10
+Up from 6.5. The trust badges ("First-timer friendly", "No-pressure consultations", "Touch-ups included") and year dates on reviews are both legitimate additions. They address the hesitation a first-timer would feel at this stage in the scroll journey. The badges are small (0.6875rem) and centred on mobile via `justify-content: center`. The year dates (2025 / 2025 / 2024 / 2025) are visible in the `review-detail` at 0.75rem. Marginal score increase for the trust signal improvement.
 
-### 7. Contact / Booking Form — 6.5 / 10
-Unchanged. Form validation, success state, and accordion FAQ function correctly. Phone, email, Instagram links at 44px. Map iframe at full width with border-radius. The per-artist Book CTAs now pre-populate the artist select, which makes the form context-aware for users arriving from the Artists section. Score holds — the pre-select is a nice touch but the form itself is unchanged.
+### 7. Contact / Booking Form — 6.8 / 10
+Up from 6.5. The form trust bar (three icon+text items) appears between the form and the submit button — exactly the right placement for reducing hesitation before the commitment action. The "Why Us" list in the info column is appropriate for a studio info sidebar. The Instagram link in the contact column now correctly links to `https://instagram.com/ironandink_phl` (the v6 Priority 1 bug is resolved). The per-artist pre-select JS from v6 still functions. The form itself is unchanged and correct. Score moves for the trust bar and the bug fix.
 
-### 8. Mobile UX at 375px — 7.5 / 10
-Up from 7.2. The scroll hint correction removes the interaction-model mismatch that was the most significant remaining UX gap. The card width at 375px is 88vw (330px), the correct size for one-card-at-a-time reading. Filter collapse animation is smooth. Sticky CTA appears after hero and hides near contact. Hamburger at 44px, dots at 44px, all filter buttons at 44px. The center-alignment pass is consistent: gallery header, contact header, reviews header, reviews aggregate, Google link, and footer brand all center on mobile. The site passes a basic mobile usability scan without visible breakage at 375px. Score moves for the hint fix and the card collapse fix landing together.
+### 8. Mobile UX at 375px — 7.6 / 10
+Up from 7.5. The artist dot labels add a meaningful discoverability improvement. At 375px the dots now read as labelled tab navigation rather than anonymous pagination dots. Everything else from v6 holds: 88vw card width, filter button collapse, sticky CTA behaviour, hamburger/nav, centre alignment across all section headers. The hero stat strip fits at full width without overflow. No new regressions. Score ticks up for the label addition.
 
-### 9. Trust & Authenticity — 5.5 / 10
-Unchanged. Stock portraits without visible tattoos. Gallery images not linked to named artists. No verifiable social presence beyond the generic Instagram URL (which links to `instagram.com` rather than `instagram.com/ironandink_phl`). JSON-LD schema logo still points to a non-existent `favicon.ico` path. The footer disclaimer ("Placeholder content — not a real business listing") is honest but for a template this is correct — real studio deployments would replace the content. Trust ceiling is a content problem, not a code problem.
+### 9. Trust & Authenticity — 5.7 / 10
+Up from 5.5. The "Why Us" credential block (custom work only, 8-year avg experience, City of Philadelphia licensed, vegan-friendly ink) and the form trust bar add concrete studio claims. The Instagram link now resolves to the correct handle. Review dates are present. These are incremental trust signals within template constraints. The ceiling — stock portraits, placeholder phone/address, initials-only reviews — remains unchanged. Small score movement for the additions.
 
 ### 10. Visual Identity / Distinctiveness — 6.5 / 10
-Unchanged. No visual changes in v6. The palette (near-black bg, accent red, gold accents), Bebas Neue / Inter / DM Serif stack, and horizontal gallery plus timeline interactions remain the site's identity. No regression, no improvement.
+Unchanged. No visual design changes in v7 beyond new Unsplash image selections. The palette, typeface stack, and scroll interactions remain identical. No regression, no improvement.
 
 ---
 
 ## Top 3 Recommendations
 
-### Priority 1 — Instagram link points to instagram.com, not the studio's handle
-The footer nav and the contact info column both reference `@ironandink_phl` but the actual `href` on the contact info Instagram link is `https://instagram.com` (no handle). The footer nav Instagram link correctly goes to `https://instagram.com/ironandink_phl`. This inconsistency means the contact column Instagram link drops users on the Instagram homepage, not the studio profile. One-line fix: update `href="https://instagram.com"` to `href="https://instagram.com/ironandink_phl"` on the `.instagram-link` in the contact info column. For a real studio this would lose direct follows from interested clients.
+### Priority 1 — The hero stat strip has a readability problem at 375px: the label text is 0.5625rem (9px) on screen
+The `.hero-stat-label` at `max-width: 720px` is set to `font-size: 0.5625rem` — that is 9px rendered. The labels "Est.", "Artists", "Stars", "Styles" at 9px in uppercase with `letter-spacing: 0.14em` are at the absolute lower bound of legibility on a standard mobile display. A user with any vision impairment will not read them. The stat numbers (Bebas Neue at 1.25rem) read clearly, but the labels that give them meaning are borderline illegible. Increase to `0.625rem` minimum or preferably `0.6875rem` at the 720px breakpoint. This is a one-line CSS change with direct impact on the most visible element of the hero.
 
-### Priority 2 — The artist section is not scroll-driven on mobile — it just renders statically
-On desktop, the `.artists-scroll-section` has a `height: 300vh` and the sticky panel switches artists as you scroll through the section. On mobile (`max-width: 720px`), the CSS sets `height: auto` and the sticky mechanic is effectively disabled — the section renders as a one-shot static layout. The scroll-driving JS (`initArtists()`) still relies on the section having scroll depth to drive artist switching. On mobile a user sees whichever artist is active (Marcus, by default) and the dots to switch. The dots work on click, which is functional, but there is no scroll behaviour to cycle through artists naturally. This is acceptable given the mobile layout constraints, but the artist info panel has `min-height: 220px` — at 375px there is enough room. Consider making the dots more visually prominent on mobile (e.g., artist name labels beside each dot, or "next artist" text link below the panel) to ensure users discover the full roster rather than landing on Marcus and leaving.
+### Priority 2 — The gallery filter bar wraps to two rows at 375px, breaking the visual hierarchy
+At 375px with `flex-wrap: wrap` the five filter buttons ("All", "Marcus", "Sasha", "Devon", "Zoey") wrap to two rows. The first row gets "All", "Marcus", "Sasha"; the second gets "Devon", "Zoey". This looks broken — uneven rows with two orphaned buttons on the second line — and it competes with the gallery header above it for visual weight. Solutions: (a) reduce filter button padding from `1.125rem` to `0.75rem` at `max-width: 480px` so all five fit on one row; (b) replace the five discrete buttons with a `<select>` dropdown on mobile only; or (c) replace with a horizontal scrolling strip (`overflow-x: auto; flex-wrap: nowrap`) with no visible scrollbar. Option (c) is the most elegant — it matches the horizontal-scroll idiom already established by the gallery itself.
 
-### Priority 3 — The gallery images do not match the described styles
-The six gallery cards are labelled Traditional, Realism, Blackwork, Japanese, Geometric, Watercolor. A prospective client on mobile will look at the image and the label to understand what the studio can do. At present: the Traditional card (photo-1604881991720) shows a tattoo artist at work — correct. The Realism card (photo-1568515045052) shows a tattoo artist — not a realism tattoo. The Blackwork card (photo-1565058379802) shows a geometric pattern — arguably correct for blackwork. The Japanese card reuses the hero image (photo-1611501275019) — a studio interior, not a Japanese tattoo. The Geometric card (photo-1531746020798) shows blurred circular forms, not line geometry. The Watercolor card (photo-1518611012118) shows a person exercising, not a watercolor tattoo. A user filtering to "Sasha" (Realism) sees a photo of an artist at work, not a portrait tattoo. This undermines the gallery's entire purpose of demonstrating styles. This is the highest-priority change for any real studio deployment of this template — swap each card image for a photograph that actually shows the described tattoo style.
+### Priority 3 — The reviews section has no call to action after the final review card
+A user reading through four reviews and a Google link has finished the trust-building section but has no in-section prompt to act. The sticky CTA is present, but it is passive — it does not speak to what the user has just read. A brief CTA block below the Google link — something as simple as a centred "Ready to book?" header with a button linking to `#contact` — would capture the conversion intent at the moment of peak trust. This is the highest-leverage unconverted moment in the current page flow: the user has read the reviews, seen the ratings, checked the Google link — and then scrolls to Pricing with no explicit invitation. A six-line HTML addition between `.reviews-google-wrap` and the closing `.container` div would close this gap.
 
 ---
 
@@ -88,8 +101,8 @@ The six gallery cards are labelled Traditional, Realism, Blackwork, Japanese, Ge
 - `prefers-reduced-motion` handling is comprehensive and correct across all scroll-driven sections.
 - Sticky CTA `aria` management is correctly implemented.
 - Gallery filter `aria-pressed` correctly toggles. `role="group"` on the filter bar is appropriate.
-- The `adjustSectionHeight()` `setTimeout(fn, 50)` before synthetic scroll dispatch is functional but would be cleaner as `requestAnimationFrame`.
-- JSON-LD schema `logo` points to `favicon.ico` (non-existent path — favicon is a data-URI). Minor: schema logo URL 404s. No user-visible consequence.
+- JSON-LD schema `logo` still points to `favicon.ico` (non-existent path — favicon is a data-URI). Minor: schema logo URL 404s. No user-visible consequence.
 - The `.gallery-hidden` collapse CSS uses `!important` on all dimension properties, which is acceptable here given the specificity context.
-- Contact info Instagram `href="https://instagram.com"` does not match footer Instagram `href="https://instagram.com/ironandink_phl"`. This is the Priority 1 bug above.
-- All tap targets confirmed at minimum 44px across filter bar, navigation, dots, info links, form elements, and sticky CTA.
+- Contact info Instagram `href` is now correctly `https://instagram.com/ironandink_phl`. V6 Priority 1 bug confirmed resolved.
+- All tap targets confirmed at minimum 44px across filter bar, navigation, dots (now labelled), info links, form elements, pricing CTAs, and sticky CTA.
+- Hero stat label font-size at `max-width: 720px` is `0.5625rem` (9px) — flagged as Priority 1 above.
