@@ -79,10 +79,6 @@
   ════════════════════════════════════════════════════ */
   (function initHero() {
     var section = $('.hero-scroll-section');
-    var cityLine = $('#heroCityLine');
-    var tagline = $('#heroTagline');
-    var actions = $('#heroActions');
-    var scrollCue = $('#heroScrollCue');
 
     if (!section) return;
 
@@ -109,11 +105,6 @@
       var bgEl = section.querySelector('.hero-bg');
       if (bgEl) {
         bgEl.style.transform = 'translateY(' + (t * 30) + 'px)';
-      }
-
-      // Hide scroll cue once we start scrolling
-      if (scrollCue) {
-        scrollCue.classList.toggle('hidden', t > 0.05);
       }
     }
 
@@ -372,27 +363,6 @@
         }
       });
     });
-  })();
-
-  /* ════════════════════════════════════════════════════
-     GENERIC REVEAL (intersection observer)
-  ════════════════════════════════════════════════════ */
-  (function initReveal() {
-    if (reduced) {
-      $$('.reveal').forEach(function (el) { el.classList.add('in-view'); });
-      return;
-    }
-
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
-
-    $$('.reveal').forEach(function (el) { obs.observe(el); });
   })();
 
   /* ════════════════════════════════════════════════════
