@@ -546,6 +546,24 @@ a { color: inherit; text-decoration: none; }
   flex-shrink: 0;
 }
 
+@media (max-width: 480px) {
+  .gallery-filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1.25rem;
+    gap: 0.5rem;
+    scrollbar-width: none;
+  }
+  .gallery-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
 .gallery-filter-btn {
   min-height: 44px;
   padding: 0 1.125rem;
@@ -1268,6 +1286,39 @@ a { color: inherit; text-decoration: none; }
 .reviews-google-link:hover { border-color: var(--text-mid); color: var(--text); }
 .reviews-google-icon { width: 16px; height: 16px; }
 
+.reviews-cta-block {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reviews-cta-heading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.reviews-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 2rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  transition: background 0.2s, opacity 0.2s;
+}
+.reviews-cta-btn:hover { opacity: 0.88; }
+
 /* ══════════════════════════════════════════════════════════
    SECTION 7: CONTACT / BOOKING
 ══════════════════════════════════════════════════════════ */
@@ -1762,7 +1813,7 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
     gap: 0;
   }
   .hero-stat-num { font-size: 1.25rem; }
-  .hero-stat-label { font-size: 0.5625rem; }
+  .hero-stat-label { font-size: 0.75rem; }
   .hero-stat-div { height: 24px; }
 
   /* Mobile form trust bar wraps */
