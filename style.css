@@ -383,7 +383,7 @@ a { color: inherit; text-decoration: none; }
    SECTION 2: HORIZONTAL GALLERY SCROLL
 ══════════════════════════════════════════════════════════ */
 .hscroll-section {
-  height: 400vh;
+  height: 300vh;
   position: relative;
 }
 
@@ -1591,7 +1591,7 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
 
   .form-row { grid-template-columns: 1fr; }
 
-  .hscroll-section { height: 300vh; }
+  .hscroll-section { height: 250vh; }
   .hcard { flex: 0 0 80vw; width: 80vw; }
 
   .artists-scroll-section { height: auto; }

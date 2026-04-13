@@ -227,8 +227,8 @@
     if (!filterBtns.length || !cards.length || !section) return;
 
     // Heights per visible card count — fewer cards = shorter scroll distance
-    // Base is 400vh (6 cards). Each visible card gets ~67vh of scroll room (min 150vh).
-    var BASE_VH = 400;
+    // Base is 300vh (6 cards). Each visible card gets ~50vh of scroll room (min 150vh).
+    var BASE_VH = 300;
     var TOTAL_CARDS = 6;
 
     function adjustSectionHeight(visibleCount) {
