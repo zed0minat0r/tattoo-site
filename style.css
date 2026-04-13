@@ -1836,7 +1836,16 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
 
   .container { padding: 0 1.25rem; }
   .hscroll-header { padding: 1.5rem 1.25rem 0.75rem; }
-  .gallery-filter-bar { padding: 0 1.25rem; margin-top: 0.5rem; }
+  .gallery-filter-bar {
+    padding: 0 1.25rem;
+    margin-top: 0.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gallery-filter-bar::-webkit-scrollbar { display: none; }
+  .gallery-filter-btn { white-space: nowrap; flex-shrink: 0; }
   .hscroll-track { padding: 0 1.25rem; gap: 1rem; }
   .hscroll-progress-wrap { padding: 0.75rem 1.25rem; }
 
