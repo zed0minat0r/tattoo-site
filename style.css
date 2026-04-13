@@ -1784,13 +1784,14 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   .form-trust-item { font-size: 0.6875rem; }
 
   .artists-scroll-section { height: auto; }
+  .artists-sticky { min-height: auto; padding: 3rem 0; }
   .artists-sticky-inner {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 1.5rem;
   }
-  .artist-panel-right { height: 45vw; min-height: 200px; }
-  .artist-info-wrap { min-height: 220px; }
+  .artist-panel-right { height: 280px; order: -1; }
+  .artist-info-wrap { min-height: auto; }
 
   .process-line-wrap { left: 1rem; }
   .process-stop { grid-template-columns: 2.5rem 1fr; gap: 1rem; }
