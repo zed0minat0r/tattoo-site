@@ -81,3 +81,77 @@ The current reviews are handwritten testimonials. Competitors embed Google revie
 - [Local Business Schema Best Practices — SMA Marketing](https://www.smamarketing.net/blog/local-business-schema-best-practices)
 - [Local SEO for Tattoo Shops — Dingg](https://dingg.app/blogs/how-us-tattoo-artists-use-local-seo-to-attract-high-value-clients)
 - [Tattoo Websites: 25+ Well-Designed Examples 2026 — SiteBuilderReport](https://www.sitebuilderreport.com/inspiration/tattoo-websites)
+
+---
+
+## Round 2 — New Findings (2026-04-09)
+
+Topics NOT covered in Round 1: AR try-on, digital waivers/intake, healed photo gallery filter, AI chatbot consultation, gift cards / e-commerce, voice search optimization, loyalty/referral program, and curated-vs-quantity portfolio strategy.
+
+---
+
+### 1. AR / Virtual Tattoo Try-On Link from the Site
+
+Over 60% of tattoo studios now offer some form of virtual try-on according to Statista 2025. The dominant tool is INKHUNTER: clients draw a smiley face on their skin, point their camera at it, and the app overlays the proposed design at real scale. Studios embed a "Try your design in AR" CTA button that deep-links to INKHUNTER or InkJin with pre-loaded artwork. This directly addresses the biggest barrier to first-time bookings — fear of commitment — and competing studios are reporting measurably higher consultation-to-booking conversion when it is present. The Iron & Ink site has no mention of any try-on tool. Adding a single CTA in the gallery ("Try this design on your skin") linked to INKHUNTER costs zero dollars and takes under an hour.
+
+### 2. Digital Waiver / Pre-Arrival Intake via QR Code or Website Link
+
+The industry standard in 2026 is to send consent and health-disclosure forms before the appointment, not after the client walks in. Platforms like eWaiverPro, StudioFlo, and Misfit Tattoo offer fully branded digital waivers that clients access by scanning a QR code from the booking confirmation email or by clicking a link on the website. Clients arrive ready to sit; artists spend zero time on paperwork. The Iron & Ink site has no mention of waivers or intake, meaning the studio is either doing paper forms in-person (slow, unprofessional by 2026 standards) or assuming the booking system handles it (Calendly does not). This is both an operational win and a trust signal — "we take your appointment seriously" messaging.
+
+### 3. Healed Photo Filter in the Gallery
+
+A small but differentiating gallery feature gaining traction in 2026: labeling and filtering portfolio images as "Fresh" vs "Healed." Fresh tattoo photos always look vivid. Healed photos show whether linework holds up, whether colors stay true, and whether the artist's technique is actually durable. Studios adding a "Healed" filter toggle to their gallery are converting skeptical clients who have been burned by artists whose work faded within a year. The current Iron & Ink gallery has no such labeling. Even adding "(Healed)" to caption text on select images, then making those filterable, is a meaningful credibility signal.
+
+### 4. AI Chatbot for Pre-Booking Consultation
+
+Platforms like Voiceflow, StudioFlo's Athena, and Jotform's Tattoo Booking AI Agent allow studios to embed a chat widget that answers pricing questions, collects design preferences, explains the process, and books a consultation slot — all without artist involvement. Studios using these tools report saving 8–10 hours per artist per week in back-and-forth DMs. The Iron & Ink contact form sends users into a 24-hour wait for a callback; a chatbot closes the loop immediately, at 2 AM if needed. Given the site already has the form infrastructure, replacing or supplementing it with a Jotform AI Agent (free tier available) is low-lift and high-reward.
+
+### 5. Digital Gift Cards as a Revenue Stream and Client Acquisition Tool
+
+Multiple high-performing tattoo studio websites (First Place Tattoos, Electric Anvil, Electric Lotus, Rise Above) sell digital gift cards directly through their site. This converts the studio's existing clients into a marketing channel — gifting a tattoo session is an increasingly popular birthday/holiday present. Square, Bookeo, and SimplyBook.me all support gift card selling alongside bookings. The Iron & Ink site has no mention of gift cards, missing a revenue stream that requires no additional inventory or effort and generates pre-paid revenue before the client even walks in.
+
+### 6. Voice Search and FAQ Schema Optimization
+
+Up to 75% of voice search queries have local intent. Searches like "best tattoo shop open now Philadelphia" or "tattoo artist near me that does realism" are routed through Google's local AI answers, which pull from structured FAQ content and Google Business Profiles. The Iron & Ink site has no FAQ schema markup and no voice-search-optimized content. Adding FAQPage JSON-LD schema to existing FAQ answers (the aftercare accordion is already there — this just needs schema tagging) would allow Google to read those Q&As as voice search answers, putting Iron & Ink into spoken results. This compounds with the JSON-LD schema finding from Round 1.
+
+### 7. Curated "Best Work Only" Portfolio Strategy (Quality Over Quantity)
+
+Leading tattoo marketing consultants in 2025-2026 are pushing a counter-trend: show 10–20 of your strongest healed pieces rather than 200 photos. The current Iron & Ink gallery has 6 style tiles with no indication of curation level. Top-converting sites lead with a hero gallery of the 12 absolute best pieces, prominently labeled by style, and gate the deeper catalog behind "View full portfolio." This makes the first impression powerful rather than overwhelming, and it forces the studio to decide what they want to be known for. This is a content strategy change that costs no dev work, just editorial curation.
+
+### 8. Referral Program / Ambassador Tier Surfaced on the Website
+
+Studios in 2025-2026 are converting repeat clients into active referral channels using tiered reward systems: 1 referral = $50 off, 3 referrals = free aftercare kit, 5 referrals = priority booking access. The key insight from research: clients are most motivated immediately after seeing their fresh tattoo — so the optimal moment to surface the referral offer is in the booking confirmation and in a post-visit follow-up, not buried on a loyalty page. The Iron & Ink site has zero mention of any referral or loyalty incentive. A single "Refer a friend, get $50 off your next session" CTA in the footer or contact confirmation screen would activate word-of-mouth that is already happening informally.
+
+---
+
+## Round 2 Priority Recommendations
+
+| Priority | Feature | Effort | Impact |
+|----------|---------|--------|--------|
+| 1 | Digital intake / waiver link on booking confirmation + site | 1–2 hrs (eWaiverPro free tier) | High — operations + trust signal |
+| 2 | Healed photo labels + filter toggle in gallery | 1–2 hrs | High — credibility, converts skeptics |
+| 3 | FAQPage JSON-LD schema on existing aftercare accordion | 30 min | High — voice search + rich results |
+| 4 | AR try-on CTA in gallery linking to INKHUNTER | 30 min | Medium-High — reduces commitment anxiety |
+| 5 | AI chat widget (Jotform AI Agent, free tier) | 1 hr | High — closes leads at 2 AM |
+| 6 | Digital gift cards via Square or SimplyBook.me | 2–3 hrs | Medium — new revenue stream |
+| 7 | "Refer a friend" CTA in footer / confirmation | 30 min | Medium — activates word-of-mouth |
+| 8 | Curated "Best 12 pieces" hero gallery above full grid | 1 hr (content curation) | Medium — stronger first impression |
+
+---
+
+## Round 2 Sources
+
+- [AR Tattoo Try-On — InkJin](https://inkjin.com/en/try-on-tattoos-ar.html)
+- [INKHUNTER App — App Store](https://apps.apple.com/us/app/inkhunter-ai-tattoo-design/id991558368)
+- [Digital Waivers for Tattoo Studios — eWaiverPro](https://ewaiverpro.com/tattoo/)
+- [How to Streamline Client Intake — StudioFlo](https://www.studioflo.io/blog/tattoo-forms-app)
+- [Tattoo Artist Portfolio: Complete Guide — TattooStudioPro](https://tattoostudiopro.com/tattoo-artist-portfolio/)
+- [AI Chatbot for Tattoo Studios — Voiceflow](https://www.voiceflow.com/blog/tattoo-studio-chatbot)
+- [Top 5 AI Chatbots for Tattoo Studios — AgentiveAIQ](https://agentiveaiq.com/listicles/top-5-smart-ai-chatbots-for-tattoo-studios)
+- [Tattoo Technology Advancements — Porter](https://www.getporter.io/blog/tattoo-technology)
+- [Local SEO for Tattoo Artists — StudioFlo](https://www.studioflo.io/blog/local-seo-for-tattoo-artists-ranking-playbook-for-2025)
+- [Tattoo Shop SEO & AEO Guide — TattooClient](https://tattooclient.com/tattoo-shop-seo-aeo/)
+- [Tattoo Loyalty Programs — Wellyx](https://wellyx.com/blog/tattoo-loyalty-programs-that-turn-first-timers-into-loyal-clients/)
+- [Tattoo Referral Program — Dingg](https://dingg.app/blogs/how-to-make-your-happy-clients-bring-you-5-new-clients-the-easy-way)
+- [InkDesk: Tattoo Boom 2026](https://inkdesk.app/blog/tattoo-boom-2026-prices-bookings-growth)
+- [Best Tattoo Studio Marketing Strategies — Bookedin](https://bookedin.com/blog/best-tattoo-studio-marketing-strategies/)
