@@ -379,6 +379,53 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-1px);
 }
 
+/* Hero stats strip */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 2.5rem auto 0;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-sm);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-width: 480px;
+  width: 100%;
+}
+
+.hero-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.625rem;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: 0.03em;
+}
+
+.hero-stat-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.hero-stat-div {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
 /* ══════════════════════════════════════════════════════════
    SECTION 2: HORIZONTAL GALLERY SCROLL
 ══════════════════════════════════════════════════════════ */
@@ -1079,6 +1126,32 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.65;
 }
 
+.pricing-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s, border-color 0.2s;
+}
+.pricing-cta:hover {
+  color: var(--text);
+  border-color: var(--text-mid);
+}
+.pricing-cta--featured {
+  color: var(--accent);
+  border-color: rgba(196,32,28,0.3);
+}
+.pricing-cta--featured:hover {
+  color: var(--accent-warm);
+  border-color: var(--accent);
+}
+
 /* ══════════════════════════════════════════════════════════
    SECTION 6: REVIEWS
 ══════════════════════════════════════════════════════════ */
@@ -1103,6 +1176,24 @@ a { color: inherit; text-decoration: none; }
 .reviews-score { font-family: 'Bebas Neue', sans-serif; font-size: 1.375rem; color: var(--text); }
 .reviews-sep { color: var(--text-dim); }
 .reviews-count { font-size: 0.875rem; color: var(--text-dim); }
+
+.reviews-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.reviews-trust-badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.3rem 0.625rem;
+}
 
 .reviews-grid {
   display: grid;
@@ -1270,6 +1361,58 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   padding: 0.875rem 1rem;
   text-align: center;
+}
+
+/* Form trust bar */
+.form-trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.form-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+}
+
+.form-trust-item svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Studio trust list in contact info */
+.studio-trust-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.studio-trust-list li {
+  font-size: 0.8125rem;
+  color: var(--text-mid);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.studio-trust-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
 }
 
 /* Pre-booking FAQ */
@@ -1526,7 +1669,8 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
 
   .hero-city,
   .hero-tagline,
-  .hero-actions {
+  .hero-actions,
+  .hero-stats {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
@@ -1611,6 +1755,20 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   .hscroll-section { height: 250vh; }
   .hcard { flex: 0 0 80vw; width: 80vw; }
 
+  /* Mobile hero stats */
+  .hero-stats {
+    max-width: 100%;
+    padding: 0.75rem 1rem;
+    gap: 0;
+  }
+  .hero-stat-num { font-size: 1.25rem; }
+  .hero-stat-label { font-size: 0.5625rem; }
+  .hero-stat-div { height: 24px; }
+
+  /* Mobile form trust bar wraps */
+  .form-trust-bar { gap: 0.75rem; }
+  .form-trust-item { font-size: 0.6875rem; }
+
   .artists-scroll-section { height: auto; }
   .artists-sticky-inner {
     grid-template-columns: 1fr;
@@ -1652,6 +1810,7 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   /* Pixel: center-align reviews section header on mobile for consistency */
   .reviews-header { text-align: center; }
   .reviews-agg { justify-content: center; }
+  .reviews-trust-badges { justify-content: center; }
 
   /* Pixel: center-align reviews header link on mobile */
   .reviews-google-wrap { justify-content: center; }
