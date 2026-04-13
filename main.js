@@ -200,12 +200,49 @@
     // Initialize first artist
     setArtist(0);
 
-    // Dot click to switch artists
+    // Dot click to switch artists (also pauses auto-advance briefly)
+    var userInteracted = false;
+    var interactTimer = null;
     dots.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
         setArtist(i);
+        // Pause auto-advance for 6s after manual interaction
+        userInteracted = true;
+        clearTimeout(interactTimer);
+        interactTimer = setTimeout(function () { userInteracted = false; }, 6000);
       });
     });
+
+    // Auto-advance artists while section is visible (IntersectionObserver)
+    if (!reduced && 'IntersectionObserver' in window) {
+      var autoInterval = null;
+
+      function startAutoAdvance() {
+        if (autoInterval) return;
+        autoInterval = setInterval(function () {
+          if (!userInteracted) {
+            setArtist((currentIdx + 1) % numArtists);
+          }
+        }, 3000);
+      }
+
+      function stopAutoAdvance() {
+        clearInterval(autoInterval);
+        autoInterval = null;
+      }
+
+      var sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            startAutoAdvance();
+          } else {
+            stopAutoAdvance();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      sectionObserver.observe(section);
+    }
   })();
 
   /* ════════════════════════════════════════════════════

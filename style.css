@@ -1636,6 +1636,22 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   opacity: 0.6;
 }
 
+.footer-referral {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.footer-referral-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-referral-link:hover {
+  color: var(--text);
+}
+
 /* ══════════════════════════════════════════════════════════
    STICKY MOBILE CTA
 ══════════════════════════════════════════════════════════ */
@@ -1720,6 +1736,9 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   .contact-layout {
     grid-template-columns: 1fr;
   }
+
+  /* Move contact info (address/phone/hours) above form+FAQ stack when grid stacks */
+  .contact-info-col { order: -1; }
 
   .reviews-grid {
     grid-template-columns: 1fr;
@@ -1855,9 +1874,6 @@ details[open] .faq-summary::after { transform: rotate(45deg); }
   /* Pixel: center-align contact section header on mobile */
   .contact-header { text-align: center; }
   .contact-header .section-desc { margin: 0 auto; }
-
-  /* Refiner: move contact info (address/phone/hours) above FAQ stack on mobile */
-  .contact-info-col { order: -1; }
 
   /* Pixel: center-align reviews section header on mobile for consistency */
   .reviews-header { text-align: center; }
