@@ -687,6 +687,8 @@ a { color: inherit; text-decoration: none; }
 .acard {
   flex: 0 0 min(72vw, 480px);
   width: min(72vw, 480px);
+  height: calc(100vh - 280px);
+  max-height: 500px;
   border-radius: var(--r-md);
   overflow: hidden;
   background: var(--bg-card);
@@ -696,7 +698,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .acard-photo {
-  flex: 0 0 45%;
+  flex: 0 0 40%;
   overflow: hidden;
   position: relative;
 }
@@ -711,10 +713,10 @@ a { color: inherit; text-decoration: none; }
 
 .acard-info {
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
   overflow-y: auto;
 }
 
