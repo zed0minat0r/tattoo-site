@@ -166,83 +166,49 @@
   })();
 
   /* ════════════════════════════════════════════════════
-     SECTION 3: STICKY ARTIST SHOWCASE
+     SECTION 3: HORIZONTAL ARTIST SCROLL
   ════════════════════════════════════════════════════ */
-  (function initArtists() {
+  (function initArtistsHscroll() {
     var section = $('.artists-scroll-section');
-    var infoPanels = $$('.artist-info');
-    var photos = $$('.artist-photo');
-    var dots = $$('.artist-dot');
+    var track = $('#artistsTrack');
+    var fill = $('#artistsFill');
+    var label = $('#artistsLabel');
 
-    if (!section || !infoPanels.length) return;
+    if (!section || !track) return;
 
-    var numArtists = infoPanels.length;
-    var currentIdx = 0;
+    var cards = $$('.acard', track);
+    var numCards = cards.length;
 
-    function setArtist(idx) {
-      if (idx === currentIdx && infoPanels[idx].classList.contains('active')) return;
+    if (reduced) return;
 
-      // Deactivate old
-      infoPanels[currentIdx].classList.remove('active');
-      photos[currentIdx] && photos[currentIdx].classList.remove('active');
-      dots[currentIdx] && dots[currentIdx].classList.remove('active');
-      dots[currentIdx] && dots[currentIdx].setAttribute('aria-selected', 'false');
+    function updateArtists() {
+      var rect = section.getBoundingClientRect();
+      var sectionH = section.offsetHeight;
+      var scrolled = -rect.top;
+      var t = unlerp(scrolled, 0, sectionH - window.innerHeight);
 
-      currentIdx = idx;
+      var trackW = track.scrollWidth;
+      var viewportW = window.innerWidth;
+      var maxOffset = trackW - viewportW + 64;
+      if (maxOffset < 0) maxOffset = 0;
 
-      // Activate new
-      infoPanels[currentIdx].classList.add('active');
-      photos[currentIdx] && photos[currentIdx].classList.add('active');
-      dots[currentIdx] && dots[currentIdx].classList.add('active');
-      dots[currentIdx] && dots[currentIdx].setAttribute('aria-selected', 'true');
+      var offset = t * maxOffset;
+      track.style.transform = 'translateX(-' + offset + 'px)';
+
+      // Progress indicator
+      if (fill) fill.style.width = (t * 100) + '%';
+
+      // Card counter
+      if (label) {
+        var cardIdx = Math.min(Math.ceil(t * numCards), numCards);
+        if (t <= 0) cardIdx = 1;
+        label.textContent = String(cardIdx).padStart(2, '0') + ' / ' + String(numCards).padStart(2, '0');
+      }
     }
 
-    // Initialize first artist
-    setArtist(0);
-
-    // Dot click to switch artists (also pauses auto-advance briefly)
-    var userInteracted = false;
-    var interactTimer = null;
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        setArtist(i);
-        // Pause auto-advance for 6s after manual interaction
-        userInteracted = true;
-        clearTimeout(interactTimer);
-        interactTimer = setTimeout(function () { userInteracted = false; }, 6000);
-      });
-    });
-
-    // Auto-advance artists while section is visible (IntersectionObserver)
-    if (!reduced && 'IntersectionObserver' in window) {
-      var autoInterval = null;
-
-      function startAutoAdvance() {
-        if (autoInterval) return;
-        autoInterval = setInterval(function () {
-          if (!userInteracted) {
-            setArtist((currentIdx + 1) % numArtists);
-          }
-        }, 3000);
-      }
-
-      function stopAutoAdvance() {
-        clearInterval(autoInterval);
-        autoInterval = null;
-      }
-
-      var sectionObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            startAutoAdvance();
-          } else {
-            stopAutoAdvance();
-          }
-        });
-      }, { threshold: 0.3 });
-
-      sectionObserver.observe(section);
-    }
+    window.addEventListener('scroll', updateArtists, { passive: true });
+    window.addEventListener('resize', updateArtists, { passive: true });
+    updateArtists();
   })();
 
   /* ════════════════════════════════════════════════════

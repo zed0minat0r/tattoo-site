@@ -349,21 +349,26 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════
-         SECTION 3: STICKY ARTIST SHOWCASE (300vh)
+         SECTION 3: HORIZONTAL ARTIST SCROLL (250vh)
     ════════════════════════════════════════════════════ -->
     <section class="artists-scroll-section" id="artists" aria-labelledby="artists-heading">
       <div class="artists-sticky">
-        <div class="artists-sticky-inner">
 
-          <!-- Left: rotating info panel -->
-          <div class="artist-panel-left">
-            <div class="artist-panel-label">
-              <span class="section-label">The Crew</span>
-              <h2 class="section-title" id="artists-heading">Our Artists</h2>
-            </div>
+        <div class="artists-hscroll-header">
+          <span class="section-label">The Crew</span>
+          <h2 class="section-title" id="artists-heading">Our Artists</h2>
+        </div>
 
-            <div class="artist-info-wrap">
-              <div class="artist-info active" data-artist-idx="0">
+        <div class="artists-track-wrap" aria-label="Meet the artists — scroll to explore">
+          <div class="artists-track" id="artistsTrack" role="list">
+
+            <!-- Card 1: Marcus Cole -->
+            <article class="acard" role="listitem">
+              <div class="acard-photo">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=75"
+                     alt="Marcus Cole, lead tattoo artist" loading="lazy" />
+              </div>
+              <div class="acard-info">
                 <div class="artist-availability open">Booking April 2026</div>
                 <h3 class="artist-name">Marcus Cole</h3>
                 <p class="artist-specialty">Traditional &amp; Japanese</p>
@@ -371,7 +376,15 @@
                 <p class="artist-bio">Marcus built his foundation in old-school flash and evolved into sprawling Japanese bodysuit work. He has a reputation in Philly for line work so clean it looks printed.</p>
                 <a href="#contact" class="artist-book-link" data-book-artist="marcus">Book Marcus &rarr;</a>
               </div>
-              <div class="artist-info" data-artist-idx="1">
+            </article>
+
+            <!-- Card 2: Sasha Reyes -->
+            <article class="acard" role="listitem">
+              <div class="acard-photo">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&auto=format&fit=crop&q=75"
+                     alt="Sasha Reyes, realism specialist" loading="lazy" />
+              </div>
+              <div class="acard-info">
                 <div class="artist-availability wait">Waitlist — booking Oct 2026</div>
                 <h3 class="artist-name">Sasha Reyes</h3>
                 <p class="artist-specialty">Realism &amp; Portrait</p>
@@ -379,7 +392,15 @@
                 <p class="artist-bio">Sasha came up through fine art before picking up a machine. Her portrait work captures expression in a way that still shocks people who see it in person. Six-month waitlist. Worth it.</p>
                 <a href="#contact" class="artist-book-link" data-book-artist="sasha">Join Sasha's Waitlist &rarr;</a>
               </div>
-              <div class="artist-info" data-artist-idx="2">
+            </article>
+
+            <!-- Card 3: Devon Park -->
+            <article class="acard" role="listitem">
+              <div class="acard-photo">
+                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=800&auto=format&fit=crop&q=75"
+                     alt="Devon Park, blackwork and geometric" loading="lazy" />
+              </div>
+              <div class="acard-info">
                 <div class="artist-availability open">Booking May 2026</div>
                 <h3 class="artist-name">Devon Park</h3>
                 <p class="artist-specialty">Blackwork &amp; Geometric</p>
@@ -387,7 +408,15 @@
                 <p class="artist-bio">Devon draws patterns the way architects draw buildings — with structure, intention, and an obsession with negative space. His dot-work mandalas are some of the tightest in the city.</p>
                 <a href="#contact" class="artist-book-link" data-book-artist="devon">Book Devon &rarr;</a>
               </div>
-              <div class="artist-info" data-artist-idx="3">
+            </article>
+
+            <!-- Card 4: Zoey Marsh -->
+            <article class="acard" role="listitem">
+              <div class="acard-photo">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&auto=format&fit=crop&q=75"
+                     alt="Zoey Marsh, color specialist" loading="lazy" />
+              </div>
+              <div class="acard-info">
                 <div class="artist-availability open">Currently open</div>
                 <h3 class="artist-name">Zoey Marsh</h3>
                 <p class="artist-specialty">Watercolor &amp; Illustrative</p>
@@ -395,44 +424,19 @@
                 <p class="artist-bio">Zoey's work looks like it was painted on, not tattooed. She pushes pigment into forms that feel alive and organic. If you want color that hits, she's your call.</p>
                 <a href="#contact" class="artist-book-link" data-book-artist="zoey">Book Zoey &rarr;</a>
               </div>
-            </div>
+            </article>
 
-            <!-- Pagination dots -->
-            <div class="artist-dots" role="tablist" aria-label="Artist navigation">
-              <button class="artist-dot active" role="tab" aria-selected="true" aria-label="Marcus Cole" data-dot="0"><span class="dot-label">Marcus</span></button>
-              <button class="artist-dot" role="tab" aria-selected="false" aria-label="Sasha Reyes" data-dot="1"><span class="dot-label">Sasha</span></button>
-              <button class="artist-dot" role="tab" aria-selected="false" aria-label="Devon Park" data-dot="2"><span class="dot-label">Devon</span></button>
-              <button class="artist-dot" role="tab" aria-selected="false" aria-label="Zoey Marsh" data-dot="3"><span class="dot-label">Zoey</span></button>
-            </div>
           </div>
-
-          <!-- Right: photo stack -->
-          <div class="artist-panel-right">
-            <div class="artist-photo-stack">
-              <div class="artist-photo active" data-photo-idx="0">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=700&auto=format&fit=crop&q=75"
-                     alt="Marcus Cole, lead tattoo artist" loading="lazy" />
-                <div class="artist-photo-badge">Lead Artist</div>
-              </div>
-              <div class="artist-photo" data-photo-idx="1">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=700&auto=format&fit=crop&q=75"
-                     alt="Sasha Reyes, realism specialist" loading="lazy" />
-                <div class="artist-photo-badge">Realism Specialist</div>
-              </div>
-              <div class="artist-photo" data-photo-idx="2">
-                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=700&auto=format&fit=crop&q=75"
-                     alt="Devon Park, blackwork and geometric" loading="lazy" />
-                <div class="artist-photo-badge">Blackwork &amp; Geo</div>
-              </div>
-              <div class="artist-photo" data-photo-idx="3">
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=700&auto=format&fit=crop&q=75"
-                     alt="Zoey Marsh, color specialist" loading="lazy" />
-                <div class="artist-photo-badge">Color Specialist</div>
-              </div>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Progress indicator -->
+        <div class="hscroll-progress-wrap" aria-hidden="true">
+          <div class="hscroll-progress-track">
+            <div class="hscroll-progress-fill" id="artistsFill"></div>
+          </div>
+          <span class="hscroll-progress-label" id="artistsLabel">01 / 04</span>
+        </div>
+
       </div>
     </section>
 
